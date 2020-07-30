@@ -22,7 +22,7 @@ export default function PetsList(props) {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(displayAllPets());
-	});
+	}, []);
 
 	return (
 		<>

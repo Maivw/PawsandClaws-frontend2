@@ -11,9 +11,9 @@ const persistConfig = {
 	key: "root",
 	storage,
 
-	whitelist: [],
+	// whitelist: [],
 
-	blacklist: [],
+	// blacklist: [],
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

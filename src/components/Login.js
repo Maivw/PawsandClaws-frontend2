@@ -28,14 +28,13 @@ export default function Login(props) {
 	const [password, setPassword] = useState("password");
 
 	const token = useSelector((state) => state.authentication.token);
-	console.log("token1", token);
+	console.log("TOKEN", token);
 
 	const dispatch = useDispatch();
 
 	const onSubmitLoginFormAdopter = (e) => {
 		e.preventDefault();
 		dispatch(loginAdopter({ email, password }));
-		dispatch(loginShelter({ email, password }));
 	};
 	const onSubmitLoginFormShelter = (e) => {
 		e.preventDefault();
