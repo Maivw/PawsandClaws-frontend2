@@ -1,0 +1,67 @@
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
+import {
+	Card,
+	CardImg,
+	CardText,
+	CardBody,
+	CardTitle,
+	CardSubtitle,
+	Button,
+	Row,
+	Col,
+} from "reactstrap";
+
+import { FaRegHeart } from "react-icons/fa";
+
+import { displayAllPets } from "../reducers/petManagement";
+
+export default function PetsList(props) {
+	const pets = useSelector((state) => state.petManagement.pets);
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(displayAllPets());
+	});
+
+	return (
+		<>
+			<div>
+				<Row className="justify-content-center">
+					<Col xl="9" lg="9" md="9" xs="12">
+						<Row>
+							{pets &&
+								pets.map((pet) => {
+									return (
+										<Col xl="3" lg="3" md="3" xs="12" className="mt-4">
+											<Card>
+												<CardImg
+													top
+													width="100%"
+													height="400px"
+													src={pet.photo}
+													alt="Card image cap"
+													style={{ objectFit: "cover" }}
+												/>
+												<CardBody>
+													<CardTitle>Name: {pet.petName}</CardTitle>
+													<CardSubtitle>Age: {pet.age}</CardSubtitle>
+													<CardText>Breed: {pet.Breed.breedName}</CardText>
+													<div className="d-flex justify-content-sm-between">
+														<FaRegHeart />
+														<Link to={`/pets/${pet.id}`}>
+															<Button>Detail</Button>
+														</Link>
+													</div>
+												</CardBody>
+											</Card>
+										</Col>
+									);
+								})}
+						</Row>
+					</Col>
+				</Row>
+			</div>
+		</>
+	);
+}

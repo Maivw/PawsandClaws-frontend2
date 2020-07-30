@@ -5,6 +5,7 @@ import storage from "redux-persist/lib/storage"; // or whatever storage you are 
 
 import authentication from "../reducers/authentication";
 import petManagement from "../reducers/petManagement";
+import inforManagement from "../reducers/inforManagement";
 
 const persistConfig = {
 	key: "root",
@@ -20,6 +21,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const reducer = combineReducers({
 	authentication,
 	petManagement,
+	inforManagement,
 });
 const persistedReducer = persistReducer(persistConfig, reducer);
 
