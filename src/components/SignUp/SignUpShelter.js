@@ -11,7 +11,15 @@ import {
 	InputGroupAddon,
 	InputGroupText,
 } from "reactstrap";
-import { FaUserAlt, FaPhoneAlt, FaLock, FaHome } from "react-icons/fa";
+import {
+	FaUserAlt,
+	FaPhoneAlt,
+	FaLock,
+	FaHome,
+	FaCity,
+	FaAsterisk,
+	FaSun,
+} from "react-icons/fa";
 
 export default function SignUpShelter(props) {
 	const states = useSelector((state) => state.inforManagement.states);
@@ -58,7 +66,7 @@ export default function SignUpShelter(props) {
 				<InputGroup className="mb-3">
 					<InputGroupAddon addonType="prepend">
 						<InputGroupText>
-							<i className="icon-user"></i>
+							<FaUserAlt />
 						</InputGroupText>
 					</InputGroupAddon>
 					<Input
@@ -72,7 +80,7 @@ export default function SignUpShelter(props) {
 				<InputGroup className="mb-3">
 					<InputGroupAddon addonType="prepend">
 						<InputGroupText>
-							<i className="icon-user"></i>
+							<FaAsterisk />
 						</InputGroupText>
 					</InputGroupAddon>
 					<Input
@@ -126,7 +134,7 @@ export default function SignUpShelter(props) {
 				<InputGroup className="mb-3">
 					<InputGroupAddon addonType="prepend">
 						<InputGroupText>
-							<i className="icon-user"></i>
+							<FaCity />
 						</InputGroupText>
 					</InputGroupAddon>
 					<Input
@@ -140,7 +148,7 @@ export default function SignUpShelter(props) {
 				<InputGroup className="mb-3">
 					<InputGroupAddon addonType="prepend">
 						<InputGroupText>
-							<FaUserAlt />
+							<FaSun />
 						</InputGroupText>
 					</InputGroupAddon>
 					<Input type="select" name="select" id="select">
@@ -156,7 +164,7 @@ export default function SignUpShelter(props) {
 				<InputGroup className="mb-3">
 					<InputGroupAddon addonType="prepend">
 						<InputGroupText>
-							<i className="icon-user"></i>
+							<FaSun />
 						</InputGroupText>
 					</InputGroupAddon>
 					<Input

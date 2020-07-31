@@ -112,7 +112,7 @@ export default function Login(props) {
 									<div>
 										<h2>Sign up</h2>
 										<p>If you do not have an account yet,please sign up</p>
-										<Link to="/register">
+										<Link to="/signup">
 											<Button
 												color="primary"
 												className="mt-3"

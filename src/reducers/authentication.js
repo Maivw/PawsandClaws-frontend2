@@ -3,12 +3,12 @@ const SET_TOKEN = "SET_TOKEN";
 const TOKEN_KEY = "TOKEN_KEY";
 const REMOVE_TOKEN = "REMOVE_TOKEN";
 
-export const loadToken = () => async (dispatch) => {
-	const token = window.localStorage.getItem(TOKEN_KEY);
-	if (token) {
-		dispatch(setToken(token));
-	}
-};
+// export const loadToken = () => async (dispatch) => {
+// 	const token = window.localStorage.getItem(TOKEN_KEY);
+// 	if (token) {
+// 		dispatch(setToken(token));
+// 	}
+// };
 export const setToken = (token) => ({ type: SET_TOKEN, token });
 export const removeToken = (token) => ({ type: REMOVE_TOKEN });
 
@@ -25,18 +25,14 @@ export const loginShelter = (params) => async (dispatch) => {
 export const signupasAnAdopter = (params) => async (dispatch) => {
 	const result = await axios.post("/users", { ...params });
 	dispatch(setToken(result.data.token));
-	console.log("result", result);
 };
 
 export const signupShelter = (params) => async (dispatch) => {
 	const result = await axios.post("/shelters", { ...params });
 	dispatch(setToken(result.data.token));
-	console.log("result", result);
 };
 
 export const logout = (params) => async (dispatch) => {
-	debugger;
-	window.localStorage.removeItem(TOKEN_KEY);
 	dispatch(removeToken());
 };
 
@@ -49,10 +45,7 @@ export default function reducer(state = {}, action) {
 			};
 		}
 		case REMOVE_TOKEN: {
-			const newState = { ...state };
-			console.log(newState);
-			delete newState.token;
-			return newState;
+			return {};
 		}
 
 		default:

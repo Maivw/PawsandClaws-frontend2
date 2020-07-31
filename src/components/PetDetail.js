@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import { Button, Row, Col } from "reactstrap";
 import AdoptionRequestModal from "./AdoptionRequest";
+import { convertAge, convertGender, convertSize } from "./Utils";
 
 import { displayAPet } from "../reducers/petManagement";
 
@@ -25,7 +26,7 @@ export default function PetDetail(props) {
 	};
 
 	return (
-		<div className="container" style={{ backgroundColor: "yellow" }}>
+		<div className="container" style={{ backgroundColor: "#dde8f1" }}>
 			<Row>
 				<AdoptionRequestModal isOpen={opened} toggle={isClosed} pet={pet} />
 				<Col>
@@ -39,10 +40,10 @@ export default function PetDetail(props) {
 							</Col>
 							<Col xl="6" lg="6" md="6" xs="12">
 								<h1>{pet.pet.petName}</h1>
-								<div>Age: {pet.pet.age}</div>
+								<div>Age: {convertAge(pet.pet.age)}</div>
 								<div>Breed: {pet.pet.Breed.breedName}</div>
-								<div>Size: {pet.pet.size}</div>
-								<div>Sex: {pet.pet.sex}</div>
+								<div>Size: {convertSize(pet.pet.size)}</div>
+								<div>Sex: {convertGender(pet.pet.sex)}</div>
 								<div>
 									IsAdopted: {pet.pet.Breed.isAdopted ? "true" : "false"}
 								</div>
@@ -54,7 +55,7 @@ export default function PetDetail(props) {
 									{pet.pet.isOkayPets ? "true" : "false"}
 								</div>
 								<div>Description: {pet.pet.description}</div>
-								<Button className="success" onClick={opendReqModal}>
+								<Button color="success" onClick={opendReqModal}>
 									Send a message to Shelter
 								</Button>
 							</Col>

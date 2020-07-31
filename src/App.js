@@ -7,6 +7,7 @@ import Home from "./components/Home";
 import Logout from "./components/Logout";
 import PetsList from "./components/PetsList";
 import PetDetail from "./components/PetDetail";
+import CreateNewPet from "./components/CreateNewPet";
 
 function App() {
 	return (
@@ -18,6 +19,7 @@ function App() {
 					<Route exact path="/" component={Home} />
 					<Route exact path="/logout" component={Logout} />
 					<Route exact path="/pets" component={PetsList} />
+					<Route exact path="/pets/new" component={CreateNewPet} />
 					<Route exact path="/pets/:id" component={PetDetail} />
 				</Switch>
 			</BrowserRouter>

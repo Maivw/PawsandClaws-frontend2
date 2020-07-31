@@ -13,17 +13,21 @@ import {
 	Col,
 } from "reactstrap";
 
-import { FaRegHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 
-import { displayAllPets } from "../reducers/petManagement";
+import { displayAllPets, favoriteAPet } from "../reducers/petManagement";
 
 export default function PetsList(props) {
 	const pets = useSelector((state) => state.petManagement.pets);
+	const favPets = useSelector((state) => state.petManagement.favoritePets);
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(displayAllPets());
 	}, []);
 
+	const likeAPet = (pet) => () => {
+		dispatch(favoriteAPet(pet));
+	};
 	return (
 		<>
 			<div>
@@ -32,6 +36,7 @@ export default function PetsList(props) {
 						<Row>
 							{pets &&
 								pets.map((pet) => {
+									const fav = favPets.find((f) => f.id === pet.id);
 									return (
 										<Col xl="3" lg="3" md="3" xs="12" className="mt-4">
 											<Card>
@@ -48,7 +53,12 @@ export default function PetsList(props) {
 													<CardSubtitle>Age: {pet.age}</CardSubtitle>
 													<CardText>Breed: {pet.Breed.breedName}</CardText>
 													<div className="d-flex justify-content-sm-between">
-														<FaRegHeart />
+														<FaHeart
+															style={{
+																color: fav ? "red" : "grey",
+															}}
+															onClick={likeAPet(pet)}
+														/>
 														<Link to={`/pets/${pet.id}`}>
 															<Button>Detail</Button>
 														</Link>

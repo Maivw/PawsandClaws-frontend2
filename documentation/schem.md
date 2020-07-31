@@ -42,7 +42,7 @@
 | size           |   integer   |              not null |
 | description    |    text     |              not null |
 | photo          | string(255) |              not null |
-| isOkayKid      |   boolean   |                       |
+| isOkayKids     |   boolean   |                       |
 | isOkayPets     |   boolean   |                       |
 | isAdopted      |   boolean   |                       |
 

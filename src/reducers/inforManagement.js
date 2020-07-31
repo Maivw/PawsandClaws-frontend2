@@ -1,29 +1,44 @@
 import axios from "../config/axiosConfig";
 
 const GET_STATES = "GET_STATES";
-const SEND_ADOPTION_REQUEST = "SEND_ADOPTION_REQUEST";
+const GET_BREEDS = "GET_BREEDS ";
+const GET_ALL_REQUESTS = "GET_ALL_REQUESTS";
 export const loadStates = (states) => ({ type: GET_STATES, states });
-export const sendAdoptionReq = (request) => ({
-	type: SEND_ADOPTION_REQUEST,
-	request,
-});
 
+export const getAllRequests = (requests) => ({
+	type: GET_ALL_REQUESTS,
+	requests,
+});
+export const loadBreeds = (breeds) => ({ type: GET_BREEDS, breeds });
 export const showStates = (params) => async (dispatch) => {
 	const result = await axios.get("/states", { ...params });
 
 	dispatch(loadStates(result.data.states));
 };
-export const sendAdoptionRequest = (params) => async (dispatch) => {
-	console.log("sendReq", params);
-	const result = await axios.post("/adoptionRequests", { ...params });
-	console.log("send", result.data.request);
-	console.log("request", result.data);
 
-	dispatch(loadStates(result.data));
+export const showBreeds = (params) => async (dispatch) => {
+	const result = await axios.get("/breeds", { ...params });
+
+	dispatch(loadBreeds(result.data.breeds));
+};
+export const sendAdoptionRequest = (params) => async (dispatch) => {
+	const result = await axios.post("/adoptionRequests", { ...params }); // shelterId, name, dogID
+
+	dispatch(displayAllReqs(params, params.shelterId));
+};
+export const displayAllReqs = (params, id) => async (dispatch) => {
+	console.log("sendReq", params);
+	const result = await axios.get(`/adoptionRequests/shelter/${id}`, {
+		...params,
+	});
+	console.log("all", result);
+
+	dispatch(getAllRequests(result.data.adoptionRequests));
 };
 const inititialState = {
 	states: [],
-	request: [],
+	requests: [],
+	breeds: [],
 };
 export default function reducer(state = inititialState, action) {
 	switch (action.type) {
@@ -33,16 +48,17 @@ export default function reducer(state = inititialState, action) {
 				states: action.states,
 			};
 		}
-
-		case SEND_ADOPTION_REQUEST: {
-			const newState = [...state.requests];
-			const request = newState.find((r) => r.id === action.request.id);
-			if (!request) {
-				newState.push(request);
-			}
+		case GET_BREEDS: {
+			console.log("checkstate", state);
 			return {
 				...state,
-				request: [...newState],
+				breeds: action.breeds,
+			};
+		}
+		case GET_ALL_REQUESTS: {
+			return {
+				...state,
+				requests: action.requests,
 			};
 		}
 
