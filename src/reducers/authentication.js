@@ -1,16 +1,32 @@
 import axios from "../config/axiosConfig";
 const SET_TOKEN = "SET_TOKEN";
-const TOKEN_KEY = "TOKEN_KEY";
+const GET_SHELTER_USER = "GET_SHELTER_USER ";
+const GET_ADOPTER = "GET_ADOPTER ";
 const REMOVE_TOKEN = "REMOVE_TOKEN";
 
-// export const loadToken = () => async (dispatch) => {
-// 	const token = window.localStorage.getItem(TOKEN_KEY);
-// 	if (token) {
-// 		dispatch(setToken(token));
-// 	}
-// };
 export const setToken = (token) => ({ type: SET_TOKEN, token });
 export const removeToken = (token) => ({ type: REMOVE_TOKEN });
+export const getShelterUser = (user) => ({ type: GET_SHELTER_USER, user });
+export const getAdopter = (adopter) => ({ type: GET_ADOPTER, adopter });
+export const shelterProfileShowUp = ({ token, id }) => async (dispatch) => {
+	if (token) {
+		const result = await axios.get(`http://localhost:8080/shelters/${id}`, {
+			...token,
+			id,
+		});
+		dispatch(getShelterUser(result.data.shelterUser));
+	}
+};
+
+export const adopterProfileShowUp = ({ token, id }) => async (dispatch) => {
+	if (token) {
+		const result = await axios.get(`http://localhost:8080/users/${id}`, {
+			...token,
+			id,
+		});
+		dispatch(getAdopter(result.data.user));
+	}
+};
 
 export const loginAdopter = (params) => async (dispatch) => {
 	const result = await axios.post("/users/login", params);
@@ -46,6 +62,19 @@ export default function reducer(state = {}, action) {
 		}
 		case REMOVE_TOKEN: {
 			return {};
+		}
+
+		case GET_SHELTER_USER: {
+			return {
+				...state,
+				user: action.user,
+			};
+		}
+		case GET_ADOPTER: {
+			return {
+				...state,
+				adopter: action.adopter,
+			};
 		}
 
 		default:

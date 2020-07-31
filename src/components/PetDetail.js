@@ -10,6 +10,7 @@ import { displayAPet } from "../reducers/petManagement";
 export default function PetDetail(props) {
 	const pet = useSelector((state) => state.petManagement.pet);
 	const id = props.match.params.id;
+	console.log("checid")
 	const [opened, setOpened] = useState(false);
 
 	const dispatch = useDispatch();

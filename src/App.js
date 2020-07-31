@@ -8,6 +8,8 @@ import Logout from "./components/Logout";
 import PetsList from "./components/PetsList";
 import PetDetail from "./components/PetDetail";
 import CreateNewPet from "./components/CreateNewPet";
+import ShelterProfile from "./components/ShelterProfile";
+import AdopterProfile from "./components/AdopterProfile";
 
 function App() {
 	return (
@@ -21,6 +23,8 @@ function App() {
 					<Route exact path="/pets" component={PetsList} />
 					<Route exact path="/pets/new" component={CreateNewPet} />
 					<Route exact path="/pets/:id" component={PetDetail} />
+					<Route exact path="/shelters/:id" component={ShelterProfile} />
+					<Route exact path="/adopters/:id" component={AdopterProfile} />
 				</Switch>
 			</BrowserRouter>
 			<div className="cursor"></div>

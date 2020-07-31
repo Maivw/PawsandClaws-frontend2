@@ -27,11 +27,18 @@ export const sendAdoptionRequest = (params) => async (dispatch) => {
 	dispatch(displayAllReqs(params, params.shelterId));
 };
 export const displayAllReqs = (params, id) => async (dispatch) => {
-	console.log("sendReq", params);
 	const result = await axios.get(`/adoptionRequests/shelter/${id}`, {
 		...params,
 	});
-	console.log("all", result);
+
+	dispatch(getAllRequests(result.data.adoptionRequests));
+};
+export const displayAllReqsOfAdopters = (params = {}, id) => async (
+	dispatch
+) => {
+	const result = await axios.get(`/adoptionRequests/user/${id}`, {
+		...params,
+	});
 
 	dispatch(getAllRequests(result.data.adoptionRequests));
 };
@@ -49,7 +56,6 @@ export default function reducer(state = inititialState, action) {
 			};
 		}
 		case GET_BREEDS: {
-			console.log("checkstate", state);
 			return {
 				...state,
 				breeds: action.breeds,
