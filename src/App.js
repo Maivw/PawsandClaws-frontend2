@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import SignUp from "./components/SignUp/SignUp";
-import Login from "./components/Login";
+import Login from "./components/Login/Login";
 import Home from "./components/Home";
 import Logout from "./components/Logout";
 import PetsList from "./components/PetsList";

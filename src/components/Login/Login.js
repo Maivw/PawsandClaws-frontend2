@@ -12,10 +12,10 @@ import {
 	Container,
 	Form,
 } from "reactstrap";
-import SignUpAdopter from "./SignUpAdopter";
-import SignUpShelter from "./SignUpShelter";
+import LoginAdopter from "./LoginAdopter";
+import LoginShelter from "./LoginShelter";
 
-export default function SignUp() {
+export default function Login() {
 	const [activeTab, setActiveTab] = useState("1");
 
 	const toggle = (tab) => {
@@ -30,8 +30,7 @@ export default function SignUp() {
 							<Card className="mx-4">
 								<CardBody className="p-4">
 									<Form>
-										<h1>Register</h1>
-										<p className="text-muted">Create your account</p>
+										<h1>Login</h1>
 										<div>
 											<Nav tabs>
 												<NavItem>
@@ -57,14 +56,14 @@ export default function SignUp() {
 												<TabPane tabId="1">
 													<Row>
 														<Col sm="12">
-															<SignUpShelter />
+															<LoginShelter />
 														</Col>
 													</Row>
 												</TabPane>
 												<TabPane tabId="2">
 													<Row>
 														<Col sm="12">
-															<SignUpAdopter />
+															<LoginAdopter />
 														</Col>
 													</Row>
 												</TabPane>

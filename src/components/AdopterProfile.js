@@ -26,13 +26,14 @@ export default function AdopterProfile(props) {
 	return (
 		<div>
 			<Container style={{ backgroundColor: "yellow" }}>
-				<Col>
-					<Row>{adopter.userame}</Row>
-					<Row>{adopter.email}</Row>
-					<Row>{adopter.firstName}</Row>
-					<Row>{adopter.lastName}</Row>
-					<Row></Row>
-				</Col>
+				{adopter && (
+					<Col>
+						<Row>{adopter.username}</Row>
+						<Row>{adopter.email}</Row>
+						<Row>{adopter.firstName}</Row>
+						<Row>{adopter.lastName}</Row>
+					</Col>
+				)}
 				Your Request:
 				<Row>
 					<Col xl="2" lg="2" md="2" xs="6">

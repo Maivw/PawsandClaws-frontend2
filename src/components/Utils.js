@@ -64,8 +64,9 @@ export function MatchPets(dogs, prefPet) {
 		}
 		dog.matchPercentage = count / 6;
 	});
-	const bestMatches = dogs.filter((dog) => {
-		return dog.matchPercentage > 0.65;
-	});
+	const bestMatches =
+		dogs.filter((dog) => {
+			return dog.matchPercentage > 0.65;
+		}) || [];
 	return bestMatches;
 }

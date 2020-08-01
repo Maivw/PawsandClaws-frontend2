@@ -60,7 +60,6 @@ export default function SignUpAdopter(props) {
 						<Input
 							type="text"
 							placeholder="LastName"
-							autoComplete="username"
 							name="lastName"
 							value={inputFields.lastName}
 							onChange={onChangeInputFields}

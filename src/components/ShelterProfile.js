@@ -11,11 +11,6 @@ export default function ShelterProfile(props) {
 	console.log("user", user);
 
 	const dispatch = useDispatch();
-	// useEffect(async () => {
-	// 	const user = await dispatch(shelterProfileShowUp({ token, id }));
-	// 	console.log("user", user);
-	// 	return user;
-	// }, []);
 
 	useEffect(async () => {
 		dispatch(shelterProfileShowUp({ token, id }));
@@ -23,13 +18,17 @@ export default function ShelterProfile(props) {
 
 	return (
 		<div>
-			<div>{user.shelterName}</div>
-			<div>{user.email}</div>
-			<div>{user.website}</div>
-			<div>{user.phoneNum}</div>
-			<div>{user.address}</div>
-			<div>{user.city}</div>
-			<div>{user.zipCode}</div>
+			{user && (
+				<div>
+					<div>{user.shelterName}</div>
+					<div>{user.email}</div>
+					<div>{user.website}</div>
+					<div>{user.phoneNum}</div>
+					<div>{user.address}</div>
+					<div>{user.city}</div>
+					<div>{user.zipCode}</div>
+				</div>
+			)}
 		</div>
 	);
 }

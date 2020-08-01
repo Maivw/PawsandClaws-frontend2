@@ -25,6 +25,36 @@ import { createPrefPetForm, showBreeds } from "../reducers/inforManagement";
 import { displayAllPets, favoriteAPet } from "../reducers/petManagement";
 import { MatchPets } from "./Utils";
 import { FaHeart } from "react-icons/fa";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
+
+function SampleNextArrow(props) {
+	const { className, style, onClick } = props;
+	return (
+		<div>
+			<FaArrowCircleRight
+				onClick={onClick}
+				className={className}
+				style={{ color: "red" }}
+			/>
+		</div>
+	);
+}
+
+function SamplePrevArrow(props) {
+	const { className, style, onClick } = props;
+	return (
+		<div>
+			<FaArrowCircleLeft
+				onClick={onClick}
+				className={className}
+				style={{ color: "red" }}
+			/>
+		</div>
+	);
+}
 
 export default function PetPrefs(props) {
 	const dispatch = useDispatch();
@@ -60,11 +90,21 @@ export default function PetPrefs(props) {
 		dispatch(favoriteAPet(pet));
 	};
 
+	const settings = {
+		dots: true,
+		infinite: true,
+		speed: 500,
+		slidesToShow: 2,
+		slidesToScroll: 2,
+		nextArrow: <SampleNextArrow />,
+		prevArrow: <SamplePrevArrow />,
+	};
+
 	return (
 		<div className="container mt-5">
 			<Row>
 				<Col xs="12" md="4">
-					<Card>
+					<Card style={{ height: "100%" }}>
 						<CardHeader>
 							<h2>Find the right dog for you</h2>
 						</CardHeader>
@@ -246,41 +286,46 @@ export default function PetPrefs(props) {
 				</Col>
 				<Col xs="12" md="8">
 					{MatchPets(pets, prefPet).map((p) => console.log(p.petName))}
-					<Row>
-						{MatchPets(pets, prefPet).map((pet) => {
-							const fav = favPets.find((f) => f.id === pet.id);
-							return (
-								<Col xl="6" lg="6" md="6" xs="12" className="mt-4">
-									<Card>
-										<CardImg
-											top
-											width="100%"
-											height="400px"
-											src={pet.photo}
-											alt="Card image cap"
-											style={{ objectFit: "cover" }}
-										/>
-										<CardBody>
-											<CardTitle>Name: {pet.petName}</CardTitle>
-											<CardSubtitle>Age: {pet.age}</CardSubtitle>
-											<CardText>Breed: {pet.Breed.breedName}</CardText>
-											<div className="d-flex justify-content-sm-between">
-												<FaHeart
-													style={{
-														color: fav ? "red" : "grey",
-													}}
-													onClick={likeAPet(pet)}
+
+					<Slider {...settings}>
+						{MatchPets(pets, prefPet) &&
+							MatchPets(pets, prefPet).map((pet) => {
+								const fav = favPets.find((f) => f.id === pet.id);
+								return (
+									<div style={{ border: "1px solid red" }}>
+										<Col xl="6" lg="6" md="6" xs="12">
+											<Card style={{ width: "200%" }}>
+												<img
+													top
+													width="100%"
+													height="400px"
+													src={pet.photo}
+													alt="Card image cap"
+													style={{ objectFit: "cover", backgroundColor: "red" }}
 												/>
-												<Link to={`/pets/${pet.id}`}>
-													<Button>Detail</Button>
-												</Link>
-											</div>
-										</CardBody>
-									</Card>
-								</Col>
-							);
-						})}
-					</Row>
+												<CardBody>
+													<CardTitle>Name: {pet.petName}</CardTitle>
+													<CardSubtitle>Age: {pet.age}</CardSubtitle>
+													<CardText>Breed: {pet.Breed.breedName}</CardText>
+													<div className="d-flex justify-content-sm-between">
+														<FaHeart
+															style={{
+																color: fav ? "red" : "grey",
+															}}
+															onClick={likeAPet(pet)}
+														/>
+														<Link to={`/pets/${pet.id}`}>
+															<Button>Detail</Button>
+														</Link>
+													</div>
+												</CardBody>
+											</Card>
+										</Col>
+									</div>
+								);
+							})}
+						{/* </Row> */}
+					</Slider>
 				</Col>
 			</Row>
 		</div>

@@ -1,5 +1,6 @@
 import { create } from "axios";
 import { store } from "../index";
+import { removeToken } from "../reducers/authentication";
 
 const api = create({
 	baseURL: "http://localhost:8080",
@@ -25,15 +26,18 @@ api.interceptors.request.use((config) => {
 });
 
 // Add a response interceptor
-// api.axiosInstance.interceptors.response.use((response) => response, (error) => {
-//   // Do something with response error
-//   if (error.response.status === 401) {
-//     window.alert('Something went wrong!. Please login again');  //eslint-disable-line
-//     // window.location.reload();
-//     store.dispatch(removeToken());
-//     window.location.href = '/#/login';
-//   }
-//   return Promise.reject(error.response);
-// });
+api.interceptors.response.use(
+	(response) => response,
+	(error) => {
+		// Do something with response error
+		if (error.response.status === 401) {
+			window.alert("Something went wrong!. Please login again"); //eslint-disable-line
+			// window.location.reload();
+			store.dispatch(removeToken());
+			window.location.href = "/login";
+		}
+		return Promise.reject(error.response);
+	}
+);
 
 export default api;

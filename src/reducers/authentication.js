@@ -14,7 +14,8 @@ export const shelterProfileShowUp = ({ token, id }) => async (dispatch) => {
 			...token,
 			id,
 		});
-		dispatch(getShelterUser(result.data.shelterUser));
+
+		return dispatch(getShelterUser(result.data.shelterUser));
 	}
 };
 
