@@ -50,3 +50,22 @@ export function convertSize(sizeIndex) {
 			return "Toy";
 	}
 }
+
+export function MatchPets(dogs, prefPet) {
+	dogs.forEach((dog) => {
+		let count = 0;
+		for (let key in prefPet) {
+			if (
+				prefPet[key] === dog[key] ||
+				(key === "breedId" && prefPet.breedId === null)
+			) {
+				count++;
+			}
+		}
+		dog.matchPercentage = count / 6;
+	});
+	const bestMatches = dogs.filter((dog) => {
+		return dog.matchPercentage > 0.65;
+	});
+	return bestMatches;
+}

@@ -3,13 +3,19 @@ import axios from "../config/axiosConfig";
 const GET_STATES = "GET_STATES";
 const GET_BREEDS = "GET_BREEDS ";
 const GET_ALL_REQUESTS = "GET_ALL_REQUESTS";
+const CREATE_PET_PREF = "CREATE_PET_PREF";
+const UPDATE_PET_PREFS = "CREATE_PET_PREFS";
 export const loadStates = (states) => ({ type: GET_STATES, states });
-
 export const getAllRequests = (requests) => ({
 	type: GET_ALL_REQUESTS,
 	requests,
 });
 export const loadBreeds = (breeds) => ({ type: GET_BREEDS, breeds });
+export const creatPrefPet = (pet) => ({
+	type: CREATE_PET_PREF,
+	pet,
+});
+
 export const showStates = (params) => async (dispatch) => {
 	const result = await axios.get("/states", { ...params });
 
@@ -42,6 +48,16 @@ export const displayAllReqsOfAdopters = (params = {}, id) => async (
 
 	dispatch(getAllRequests(result.data.adoptionRequests));
 };
+
+export const createPrefPetForm = (params) => async (dispatch) => {
+	debugger;
+	const result = await axios.post(`/preferredPets`, {
+		...params,
+	});
+
+	console.log("prefPet", result.data.pref);
+	dispatch(creatPrefPet(result.data.pref));
+};
 const inititialState = {
 	states: [],
 	requests: [],
@@ -65,6 +81,13 @@ export default function reducer(state = inititialState, action) {
 			return {
 				...state,
 				requests: action.requests,
+			};
+		}
+
+		case CREATE_PET_PREF: {
+			return {
+				...state,
+				pet: action.pet,
 			};
 		}
 
