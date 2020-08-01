@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import "../index.css";
 import { Redirect } from "react-router-dom";
 import { Button } from "reactstrap";
+import { FaUserAltSlash } from "react-icons/fa";
 
 import { logout } from "../reducers/authentication";
 
@@ -17,9 +18,5 @@ export default function Logout(props) {
 		history.push("/login");
 	};
 
-	return (
-		<Button color="success" onClick={OnLogout}>
-			success
-		</Button>
-	);
+	return <FaUserAltSlash className="ml-5" onClick={OnLogout} />;
 }

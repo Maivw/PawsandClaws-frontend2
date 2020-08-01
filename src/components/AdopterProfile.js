@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Table } from "reactstrap";
 import { adopterProfileShowUp } from "../reducers/authentication";
 import { displayAllReqsOfAdopters } from "../reducers/inforManagement";
 
@@ -10,8 +10,6 @@ export default function AdopterProfile(props) {
 	const id = props.match.params.id;
 	const adopter = useSelector((state) => state.authentication.adopter);
 	const requests = useSelector((state) => state.inforManagement.requests);
-	console.log("adopter", adopter);
-	console.log("requests", requests);
 
 	const dispatch = useDispatch();
 
@@ -25,7 +23,7 @@ export default function AdopterProfile(props) {
 
 	return (
 		<div>
-			<Container style={{ backgroundColor: "yellow" }}>
+			<Container style={{ backgroundColor: "" }}>
 				{adopter && (
 					<Col>
 						<Row>{adopter.username}</Row>
@@ -35,49 +33,31 @@ export default function AdopterProfile(props) {
 					</Col>
 				)}
 				Your Request:
-				<Row>
-					<Col xl="2" lg="2" md="2" xs="6">
-						Num
-					</Col>
-					<Col xl="2" lg="2" md="2" xs="6">
-						Pet Information
-					</Col>
-					<Col xl="2" lg="2" md="2" xs="6">
-						Shelter Name
-					</Col>
-					<Col xl="2" lg="2" md="2" xs="6">
-						Message
-					</Col>
-					<Col xl="2" lg="2" md="2" xs="6">
-						Send Date
-					</Col>
-					<Col xl="2" lg="2" md="2" xs="6">
-						Is Accepted
-					</Col>
-				</Row>
-				{requests &&
-					requests.map((req) => (
-						<Row>
-							<Col xl="2" lg="2" md="2" xs="6">
-								{req.id}
-							</Col>
-							<Col xl="2" lg="2" md="2" xs="6">
-								<Link to={`/pets/${req.Pet.id}`}>{req.Pet.petName}</Link>
-							</Col>
-							<Col xl="2" lg="2" md="2" xs="6">
-								{req.ShelterUser.shelterName}
-							</Col>
-							<Col xl="2" lg="2" md="2" xs="6">
-								{req.message}
-							</Col>
-							<Col xl="2" lg="2" md="2" xs="6">
-								{req.createdAt}
-							</Col>
-							<Col xl="2" lg="2" md="2" xs="6">
-								{req.isAccepted ? "Yes" : "No"}
-							</Col>
-						</Row>
-					))}
+				<Table bordered>
+					<thead>
+						<tr xl="2" lg="2" md="2" xs="6">
+							<th>#</th>
+							<th>Pet Information</th>
+							<th>Shelter Name</th>
+							<th>Message</th>
+							<th>Send Date</th>
+							<th>Is Accepted</th>
+						</tr>
+					</thead>
+					<tbody>
+						{requests &&
+							requests.map((req, i) => (
+								<tr xl="2" lg="2" md="2" xs="6" key={i}>
+									<th scope="row">{i + 1}</th>
+									<td>{req.Pet.petName}</td>
+									<td>{req.ShelterUser.shelterName}</td>
+									<td>{req.message}</td>
+									<td>{req.createdAt}</td>
+									<td>{req.isAccepted ? "Yes" : "No"}</td>
+								</tr>
+							))}
+					</tbody>
+				</Table>
 			</Container>
 		</div>
 	);

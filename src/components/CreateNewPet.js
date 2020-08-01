@@ -19,8 +19,9 @@ import { showBreeds } from "../reducers/inforManagement";
 
 export default function CreateNewPet(props) {
 	const dispatch = useDispatch();
+	const [file, setFile] = useState("");
+	const [imageFile, setImageFile] = useState("");
 	const breeds = useSelector((state) => state.inforManagement.breeds);
-	// const favPets = useSelector((state) => state.petManagement.favoritePets);
 	const [fields, setFields] = useState({
 		petName: "",
 		photo: "",
@@ -29,9 +30,9 @@ export default function CreateNewPet(props) {
 		size: "",
 		description: "",
 		sex: 1,
-		isOkayKids: "True",
-		isOkayPets: "True",
-		isAdopted: "False",
+		isOkayKids: "true",
+		isOkayPets: "true",
+		isAdopted: "false",
 	});
 	console.log("breeds", breeds);
 	useEffect(() => {
@@ -39,12 +40,34 @@ export default function CreateNewPet(props) {
 	}, []);
 
 	const onSend = (e) => {
-		dispatch(postANewPet(fields));
+		var data = new FormData();
+		console.log("fields", fields);
+		console.log("file", file);
+		data.append("petName", fields.petName);
+		data.append("photo", file);
+		data.append("breedId", fields.breedId);
+		data.append("age", fields.age);
+		data.append("size", fields.size);
+		data.append("description", fields.description);
+		data.append("sex", fields.sex);
+		data.append("isOkayKids", fields.isOkayKids);
+		data.append("isOkayPets", fields.isOkayPets);
+		data.append("isAdopted", fields.isAdopted);
+
+		console.log("DATA", data);
+
+		dispatch(postANewPet(data));
+	};
+	const handleChangeUpload = (e) => {
+		setImageFile(URL.createObjectURL(e.target.files[0]));
+		setFile(e.target.files[0]);
 	};
 	const changeFields = (e) => {
 		const { name, value } = e.target;
 		setFields((prev) => ({ ...prev, [name]: value }));
 	};
+
+	console.log("fields222", fields);
 
 	return (
 		<div className="container">
@@ -69,7 +92,7 @@ export default function CreateNewPet(props) {
 									onChange={changeFields}
 								/>
 							</InputGroup>
-							<InputGroup className="mb-3">
+							{/* <InputGroup className="mb-3">
 								<Input
 									type="text"
 									name="photo"
@@ -77,7 +100,7 @@ export default function CreateNewPet(props) {
 									value={fields.photo}
 									onChange={changeFields}
 								/>
-							</InputGroup>
+							</InputGroup> */}
 							<InputGroup className="mb-3">
 								<Input
 									type="select"
@@ -185,8 +208,8 @@ export default function CreateNewPet(props) {
 											type="radio"
 											id="yes"
 											name="isOkayKid"
-											value="True"
-											checked={fields.isOkayKids === "True"}
+											value="true"
+											checked={fields.isOkayKids === "true"}
 											onChange={changeFields}
 										/>
 										<Label className="form-check-label" check htmlFor="yes">
@@ -199,8 +222,8 @@ export default function CreateNewPet(props) {
 											type="radio"
 											id="no"
 											name="isOkayKid"
-											value="False"
-											checked={fields.isOkayKids === "False"}
+											value="false"
+											checked={fields.isOkayKids === "false"}
 											onChange={changeFields}
 										/>
 										<Label className="form-check-label" check htmlFor="no">
@@ -220,8 +243,8 @@ export default function CreateNewPet(props) {
 											type="radio"
 											id="yes"
 											name="isOkayPets"
-											value="True"
-											checked={fields.isOkayPets === "True"}
+											value="true"
+											checked={fields.isOkayPets === "true"}
 											onChange={changeFields}
 										/>
 										<Label className="form-check-label" check htmlFor="yes">
@@ -234,8 +257,8 @@ export default function CreateNewPet(props) {
 											type="radio"
 											id="no"
 											name="isOkayPets"
-											value="False"
-											checked={fields.isOkayPets === "False"}
+											value="false"
+											checked={fields.isOkayPets === "false"}
 											onChange={changeFields}
 										/>
 										<Label className="form-check-label" check htmlFor="no">
@@ -255,8 +278,8 @@ export default function CreateNewPet(props) {
 											type="radio"
 											id="yes"
 											name="isAdopted"
-											value="True"
-											checked={fields.isAdopted === "True"}
+											value="true"
+											checked={fields.isAdopted === "true"}
 											onChange={changeFields}
 										/>
 										<Label className="form-check-label" check htmlFor="yes">
@@ -269,8 +292,8 @@ export default function CreateNewPet(props) {
 											type="radio"
 											id="no"
 											name="isAdopted"
-											value="False"
-											checked={fields.isAdopted === "False"}
+											value="false"
+											checked={fields.isAdopted === "false"}
 											onChange={changeFields}
 										/>
 										<Label className="form-check-label" check htmlFor="no">
@@ -285,6 +308,15 @@ export default function CreateNewPet(props) {
 						<Button color="success" onClick={onSend}>
 							Add
 						</Button>
+						<InputGroup className="mb-3">
+							<Input
+								name="image_url"
+								type="file"
+								placeholder="Image file"
+								value={fields.photo}
+								onChange={handleChangeUpload}
+							/>
+						</InputGroup>
 					</Col>
 				</Card>
 			</Col>

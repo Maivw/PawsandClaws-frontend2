@@ -3,10 +3,15 @@ const GET_ALL_PETS = "GET_ALL_PETS ";
 const GET_A_PET = "GET_A_PET ";
 const FAVORITE_PET = "FAVORITE_PET";
 const DELETE_A_PET = "DELETE_A_PET";
+const GET_PETS_OF_SHELTERS = "GET_PETS_OF_SHELTERS";
 
 export const getAllPets = (pets) => ({ type: GET_ALL_PETS, pets });
 export const getAPet = (pet) => ({ type: GET_A_PET, pet });
 export const removeAPet = (pet) => ({ type: DELETE_A_PET, pet });
+export const gePetsOfAShelter = (shelterPets) => ({
+	type: GET_PETS_OF_SHELTERS,
+	shelterPets,
+});
 
 export const displayAllPets = (params = {}) => async (dispatch) => {
 	const result = await axios.get("/pets", { ...params });
@@ -19,16 +24,26 @@ export const displayAPet = (params, id) => async (dispatch) => {
 	dispatch(getAPet(result.data));
 };
 
+export const displayAllPetsShelter = ({ params = {}, id }) => async (
+	dispatch
+) => {
+	// {pageSize: 1, limit: 10}
+	// fetch: localhost:3000/pets/1/detail?pageSize=${pageSize}&limit={limit} qs
+	const result = await axios.get(`/pets/shelters/${id}`, { ...params }); // localhost:3000/pets/1/detail?pageSize=1&limit=10
+	console.log("hhhhhh", result.data);
+
+	dispatch(gePetsOfAShelter(result.data.pets));
+};
+
 export const favoriteAPet = (pet) => (dispatch) => {
-	console.log("alllalallalala");
 	dispatch({
 		type: FAVORITE_PET,
 		pet,
 	});
 };
 
-export const postANewPet = (params = {}) => async (dispatch) => {
-	const result = await axios.post(`/pets`, { ...params });
+export const postANewPet = (params) => async (dispatch) => {
+	const result = await axios.post(`/pets`, params);
 
 	dispatch(getAllPets());
 };
@@ -79,7 +94,12 @@ export default function reducer(state = inititialState, action) {
 				pets: [...restPets],
 			};
 		}
-
+		case GET_PETS_OF_SHELTERS: {
+			return {
+				...state,
+				shelterPets: action.shelterPets,
+			};
+		}
 		default:
 			return state;
 	}

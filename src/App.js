@@ -11,6 +11,7 @@ import CreateNewPet from "./components/CreateNewPet";
 import ShelterProfile from "./components/ShelterProfile";
 import AdopterProfile from "./components/AdopterProfile";
 import PetPrefs from "./components/PetPrefs";
+import PetsListOfShelter from "./components/PetListOfShelter";
 
 function App() {
 	return (
@@ -27,6 +28,11 @@ function App() {
 					<Route exact path="/shelters/:id" component={ShelterProfile} />
 					<Route exact path="/adopters/:id" component={AdopterProfile} />
 					<Route exact path="/preferredPet" component={PetPrefs} />
+					<Route
+						exact
+						path="/pets/shelters/:id"
+						component={PetsListOfShelter}
+					/>
 				</Switch>
 			</BrowserRouter>
 			<div className="cursor"></div>
