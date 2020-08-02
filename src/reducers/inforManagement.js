@@ -54,8 +54,6 @@ export const createPrefPetForm = (params) => async (dispatch) => {
 	const result = await axios.post(`/preferredPets`, {
 		...params,
 	});
-
-	console.log("prefPet", result.data.pref);
 	dispatch(creatPrefPet(result.data.pref));
 };
 const inititialState = {

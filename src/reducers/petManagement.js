@@ -30,7 +30,6 @@ export const displayAllPetsShelter = ({ params = {}, id }) => async (
 	// {pageSize: 1, limit: 10}
 	// fetch: localhost:3000/pets/1/detail?pageSize=${pageSize}&limit={limit} qs
 	const result = await axios.get(`/pets/shelters/${id}`, { ...params }); // localhost:3000/pets/1/detail?pageSize=1&limit=10
-	console.log("hhhhhh", result.data);
 
 	dispatch(gePetsOfAShelter(result.data.pets));
 };

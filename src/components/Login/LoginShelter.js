@@ -11,14 +11,16 @@ import {
 	InputGroupText,
 	Row,
 } from "reactstrap";
-import { loginAdopter, loginShelter } from "../../reducers/authentication";
+import { loginShelter } from "../../reducers/authentication";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 
 export default function LoginShelter(props) {
 	const [email, setEmail] = useState("Demo@DemoUser.com");
 	const [password, setPassword] = useState("password");
 
-	const token = useSelector((state) => state.authentication.token);
+	const tokenShelter = useSelector(
+		(state) => state.authentication.tokenShelter
+	);
 
 	const dispatch = useDispatch();
 
@@ -27,7 +29,7 @@ export default function LoginShelter(props) {
 		dispatch(loginShelter({ email, password }));
 	};
 
-	if (token) {
+	if (tokenShelter) {
 		return <Redirect to="/homeShelter" />;
 	}
 

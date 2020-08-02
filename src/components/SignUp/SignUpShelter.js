@@ -23,8 +23,9 @@ import {
 
 export default function SignUpShelter(props) {
 	const states = useSelector((state) => state.inforManagement.states);
-	console.log("state2234", states);
-	const token = useSelector((state) => state.authentication.token);
+	const tokenShelter = useSelector(
+		(state) => state.authentication.tokenShelter
+	);
 	const dispatch = useDispatch();
 	const [inputFields, setInputFields] = useState({
 		shelterName: "",
@@ -57,7 +58,7 @@ export default function SignUpShelter(props) {
 	const [dropdownOpen, setOpen] = useState(false);
 
 	const toggle = () => setOpen(!dropdownOpen);
-	if (token) {
+	if (tokenShelter) {
 		return <Redirect to="/homeShelter" />;
 	}
 	return (

@@ -1,10 +1,15 @@
 import axios from "../config/axiosConfig";
 const SET_TOKEN = "SET_TOKEN";
+const SET_TOKEN_SHELTER = "SET_TOKEN_SHELTER ";
 const GET_SHELTER_USER = "GET_SHELTER_USER ";
 const GET_ADOPTER = "GET_ADOPTER ";
 const REMOVE_TOKEN = "REMOVE_TOKEN";
 
 export const setToken = (token) => ({ type: SET_TOKEN, token });
+export const setTokenShelter = (tokenShelter) => ({
+	type: SET_TOKEN_SHELTER,
+	tokenShelter,
+});
 export const removeToken = (token) => ({ type: REMOVE_TOKEN });
 export const getShelterUser = (user) => ({ type: GET_SHELTER_USER, user });
 export const getAdopter = (adopter) => ({ type: GET_ADOPTER, adopter });
@@ -36,7 +41,7 @@ export const loginAdopter = (params) => async (dispatch) => {
 
 export const loginShelter = (params) => async (dispatch) => {
 	const result = await axios.post("/shelters/login", params);
-	dispatch(setToken(result.data.token));
+	dispatch(setTokenShelter(result.data.tokenShelter));
 };
 
 export const signupasAnAdopter = (params) => async (dispatch) => {
@@ -45,9 +50,8 @@ export const signupasAnAdopter = (params) => async (dispatch) => {
 };
 
 export const signupShelter = (params) => async (dispatch) => {
-	const result = await axios.post("/shelters", params);
-	console.log("signup", result);
-	dispatch(setToken(result.data.token));
+	const result = await axios.post("/shelters", { ...params });
+	dispatch(setTokenShelter(result.data.tokenShelter));
 };
 
 export const logout = (params) => async (dispatch) => {
@@ -60,6 +64,12 @@ export default function reducer(state = {}, action) {
 			return {
 				...state,
 				token: action.token,
+			};
+		}
+		case SET_TOKEN_SHELTER: {
+			return {
+				...state,
+				tokenShelter: action.tokenShelter,
 			};
 		}
 		case REMOVE_TOKEN: {
