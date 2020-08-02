@@ -27,7 +27,7 @@ export default function NavBarShelter(props) {
 			<Collapse isOpen={!collapsed} navbar>
 				<Nav navbar>
 					<NavItem>
-						<NavLink href="/adopters/1">
+						<NavLink href="/shelters/1">
 							<FaUserCheck className="ml-5" />
 						</NavLink>
 					</NavItem>

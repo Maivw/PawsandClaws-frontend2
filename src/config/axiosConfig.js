@@ -21,7 +21,16 @@ api.interceptors.request.use((config) => {
 			Authorization: `Bearer ${state.authentication.token}`,
 		},
 	};
-	// return { ...config };
+});
+api.interceptors.request.use((config) => {
+	const state = store.getState();
+	return {
+		...config,
+		headers: {
+			...config.headers,
+			Authorization: `Bearer ${state.authentication.tokenShelter}`,
+		},
+	};
 });
 
 // Add a response interceptor

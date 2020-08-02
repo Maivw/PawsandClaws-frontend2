@@ -5,7 +5,11 @@ import { Button } from "reactstrap";
 import { shelterProfileShowUp } from "../reducers/authentication";
 
 export default function ShelterProfile(props) {
-	const token = useSelector((state) => state.authentication.token);
+	const tokenShelter = useSelector(
+		(state) => state.authentication.tokenShelter
+	);
+
+	console.log("again", tokenShelter);
 	const id = props.match.params.id;
 	const user = useSelector((state) => state.authentication.user);
 	console.log("user", user);
@@ -13,7 +17,7 @@ export default function ShelterProfile(props) {
 	const dispatch = useDispatch();
 
 	useEffect(async () => {
-		dispatch(shelterProfileShowUp({ token, id }));
+		dispatch(shelterProfileShowUp({ tokenShelter, id }));
 	}, []);
 
 	return (

@@ -13,12 +13,14 @@ export const setTokenShelter = (tokenShelter) => ({
 export const removeToken = (token) => ({ type: REMOVE_TOKEN });
 export const getShelterUser = (user) => ({ type: GET_SHELTER_USER, user });
 export const getAdopter = (adopter) => ({ type: GET_ADOPTER, adopter });
-export const shelterProfileShowUp = ({ token, id }) => async (dispatch) => {
-	if (token) {
-		const result = await axios.get(`http://localhost:8080/shelters/${id}`, {
-			...token,
-			id,
-		});
+export const shelterProfileShowUp = (params) => async (dispatch) => {
+	if (params.tokenShelter) {
+		const result = await axios.get(
+			`http://localhost:8080/shelters/${params.id}`,
+			{
+				...params,
+			}
+		);
 
 		return dispatch(getShelterUser(result.data.shelterUser));
 	}
