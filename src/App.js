@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import SignUp from "./components/SignUp/SignUp";
 import Login from "./components/Login/Login";
-import Home from "./components/Home";
+import HomeAdopter from "./components/Home";
 import Logout from "./components/Logout";
 import PetsList from "./components/PetsList";
 import PetDetail from "./components/PetDetail";
@@ -12,6 +12,7 @@ import ShelterProfile from "./components/ShelterProfile";
 import AdopterProfile from "./components/AdopterProfile";
 import PetPrefs from "./components/PetPrefs";
 import PetsListOfShelter from "./components/PetListOfShelter";
+import HomeShelter from "./components/HomeShelter";
 
 function App() {
 	return (
@@ -20,7 +21,8 @@ function App() {
 				<Switch>
 					<Route exact path="/signup" component={SignUp} />
 					<Route exact path="/login" component={Login} />
-					<Route exact path="/" component={Home} />
+					<Route exact path="/homeAdopter" component={HomeAdopter} />
+					<Route exact path="/homeShelter" component={HomeShelter} />
 					<Route exact path="/logout" component={Logout} />
 					<Route exact path="/pets" component={PetsList} />
 					<Route exact path="/pets/new" component={CreateNewPet} />

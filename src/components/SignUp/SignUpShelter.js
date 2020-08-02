@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { signupShelter } from "../../reducers/authentication";
 import { showStates } from "../../reducers/inforManagement";
 import {
@@ -23,16 +23,17 @@ import {
 
 export default function SignUpShelter(props) {
 	const states = useSelector((state) => state.inforManagement.states);
+	console.log("state2234", states);
 	const token = useSelector((state) => state.authentication.token);
 	const dispatch = useDispatch();
 	const [inputFields, setInputFields] = useState({
 		shelterName: "",
 		website: "",
-		phoneNume: "",
+		phoneNum: "",
 		email: "",
 		address: "",
 		city: "",
-		state: "",
+		stateId: "",
 		zipCode: "",
 		password: "",
 		confirmPassword: "",
@@ -40,7 +41,7 @@ export default function SignUpShelter(props) {
 
 	const onSubmitSignupShelter = (e) => {
 		e.preventDefault();
-		dispatch(signupShelter({ inputFields }));
+		dispatch(signupShelter(inputFields));
 	};
 
 	const onChangeInputFields = (e) => {
@@ -57,7 +58,7 @@ export default function SignUpShelter(props) {
 
 	const toggle = () => setOpen(!dropdownOpen);
 	if (token) {
-		return <Redirect to="/" />;
+		return <Redirect to="/homeShelter" />;
 	}
 	return (
 		<div>
@@ -100,7 +101,7 @@ export default function SignUpShelter(props) {
 						type="text"
 						placeholder="PhoneNum"
 						name="phoneNum"
-						value={inputFields.phoneNume}
+						value={inputFields.phoneNum}
 						onChange={onChangeInputFields}
 					/>
 				</InputGroup>
@@ -150,10 +151,16 @@ export default function SignUpShelter(props) {
 							<FaSun />
 						</InputGroupText>
 					</InputGroupAddon>
-					<Input type="select" name="select" id="select">
+					<Input
+						type="select"
+						name="stateId"
+						id="stateId"
+						value={inputFields.stateId}
+						onChange={onChangeInputFields}
+					>
 						{states.map((st) => {
 							return (
-								<option key={st.id} value={st.id}>
+								<option key={st.id} value={st.id} name="stateId">
 									{st.stateName}
 								</option>
 							);

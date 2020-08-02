@@ -45,7 +45,8 @@ export const signupasAnAdopter = (params) => async (dispatch) => {
 };
 
 export const signupShelter = (params) => async (dispatch) => {
-	const result = await axios.post("/shelters", { ...params });
+	const result = await axios.post("/shelters", params);
+	console.log("signup", result);
 	dispatch(setToken(result.data.token));
 };
 

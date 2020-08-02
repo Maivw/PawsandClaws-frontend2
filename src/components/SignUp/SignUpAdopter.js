@@ -13,6 +13,7 @@ import { signupasAnAdopter } from "../../reducers/authentication";
 import { FaUserAlt, FaPhoneAlt, FaLock } from "react-icons/fa";
 
 export default function SignUpAdopter(props) {
+	const token = useSelector((state) => state.authentication.token);
 	const dispatch = useDispatch();
 	const [inputFields, setInputFields] = useState({
 		firstName: "",
@@ -33,6 +34,9 @@ export default function SignUpAdopter(props) {
 		e.preventDefault();
 		dispatch(signupasAnAdopter(inputFields));
 	};
+	if (token) {
+		return <Redirect to="/homeAdopter" />;
+	}
 	return (
 		<>
 			<div>

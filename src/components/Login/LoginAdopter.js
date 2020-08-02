@@ -33,7 +33,7 @@ export default function LoginAdopter(props) {
 	};
 
 	if (token) {
-		return <Redirect to="/" />;
+		return <Redirect to="/homeAdopter" />;
 	}
 
 	return (
