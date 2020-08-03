@@ -12,20 +12,16 @@ import {
 } from "reactstrap";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 
-import { loginAdopter, loginShelter } from "../../reducers/authentication";
+import { loginAdopter } from "../../reducers/authentication";
 
 export default function LoginAdopter(props) {
 	const [email, setEmail] = useState("Demo@DemoUser.com");
 	const [password, setPassword] = useState("password");
-	const token = useSelector((state) => state.authentication.adopter.token);
+	const token = useSelector((state) => state.authentication.user.token);
 	const dispatch = useDispatch();
 	const onSubmitLoginFormAdopter = (e) => {
 		e.preventDefault();
 		dispatch(loginAdopter({ email, password }));
-	};
-	const onSubmitLoginFormShelter = (e) => {
-		e.preventDefault();
-		dispatch(loginShelter({ email, password }));
 	};
 
 	if (token) {
@@ -50,6 +46,7 @@ export default function LoginAdopter(props) {
 						type="text"
 						placeholder="Username"
 						autoComplete="username"
+						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 					/>
 				</InputGroup>
@@ -63,6 +60,7 @@ export default function LoginAdopter(props) {
 						type="password"
 						placeholder="Password"
 						autoComplete="current-password"
+						value={password}
 						onChange={(e) => setPassword(e.target.value)}
 					/>
 				</InputGroup>
