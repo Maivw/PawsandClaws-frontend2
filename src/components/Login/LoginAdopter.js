@@ -17,7 +17,7 @@ import { loginAdopter, loginShelter } from "../../reducers/authentication";
 export default function LoginAdopter(props) {
 	const [email, setEmail] = useState("Demo@DemoUser.com");
 	const [password, setPassword] = useState("password");
-	const token = useSelector((state) => state.authentication.token);
+	const token = useSelector((state) => state.authentication.adopter.token);
 	const dispatch = useDispatch();
 	const onSubmitLoginFormAdopter = (e) => {
 		e.preventDefault();

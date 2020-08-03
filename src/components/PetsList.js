@@ -44,6 +44,7 @@ export default function PetsList(props) {
 													borderRadius: 10,
 													boxShadow: "2px 4px 8px 2px rgba(0, 0, 0, 0.2)",
 												}}
+												className="card-pet"
 											>
 												<CardImg
 													top

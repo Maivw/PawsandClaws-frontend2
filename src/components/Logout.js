@@ -9,7 +9,10 @@ import { FaUserAltSlash } from "react-icons/fa";
 import { logout } from "../reducers/authentication";
 
 export default function Logout(props) {
-	const token = useSelector((state) => state.authentication.token);
+	// const token = useSelector((state) => state.authentication.token);
+	// const tokenShelter = useSelector(
+	// 	(state) => state.authentication.user.tokenShelter
+	// );
 	let history = useHistory();
 	const dispatch = useDispatch();
 	const OnLogout = (e) => {

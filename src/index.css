@@ -8,3 +8,10 @@
 .nav-item {
 	color: white;
 }
+.card-pet {
+	/* background-color: brown !important; */
+}
+
+.card-pet:hover {
+	transform: scale(1.1);
+}

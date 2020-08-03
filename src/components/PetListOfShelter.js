@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
 	Card,
 	CardImg,
@@ -14,15 +14,17 @@ import {
 } from "reactstrap";
 
 import { displayAllPetsShelter } from "../reducers/petManagement";
+// import { useParams } from "react-router";
 
 export default function PetsListOfShelter(props) {
 	const pets = useSelector((state) => state.petManagement.shelterPets);
 	const token = useSelector((state) => state.authentication.token);
-	const shelterId = useSelector((state) => state.authentication.user.id);
+	const { id } = useParams();
+	console.log("kkkkk", id);
 
 	const dispatch = useDispatch();
 	useEffect(() => {
-		dispatch(displayAllPetsShelter({ shelterId }));
+		dispatch(displayAllPetsShelter({ id }));
 	}, []);
 
 	return (
@@ -34,7 +36,14 @@ export default function PetsListOfShelter(props) {
 							{pets &&
 								pets.map((pet) => {
 									return (
-										<Col xl="3" lg="3" md="3" xs="12" className="mt-4">
+										<Col
+											xl="3"
+											lg="3"
+											md="3"
+											xs="12"
+											className="mt-4"
+											key={pet.id}
+										>
 											<Card
 												style={{
 													borderRadius: 10,

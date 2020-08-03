@@ -1,23 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
-import { Button } from "reactstrap";
+
 import { shelterProfileShowUp } from "../reducers/authentication";
 
 export default function ShelterProfile(props) {
 	const tokenShelter = useSelector(
-		(state) => state.authentication.tokenShelter
+		(state) => state.authentication.user.tokenShelter
 	);
 
 	console.log("again", tokenShelter);
-	const id = props.match.params.id;
 	const user = useSelector((state) => state.authentication.user);
-	console.log("user", user);
+	console.log("idddddd", user);
 
 	const dispatch = useDispatch();
 
-	useEffect(async () => {
-		dispatch(shelterProfileShowUp({ tokenShelter, id }));
+	useEffect(() => {
+		dispatch(shelterProfileShowUp({ id: user.id }));
 	}, []);
 
 	return (

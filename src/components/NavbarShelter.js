@@ -14,6 +14,9 @@ import { FaUserCheck, FaDog } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function NavBarShelter(props) {
+	const shelterId = useSelector((state) => state.authentication.user.user.id);
+	console.log("lllhhh", shelterId);
+	const role = useSelector((state) => state.authentication.user.role);
 	const [collapsed, setCollapsed] = useState(true);
 
 	const toggleNavbar = () => setCollapsed(!collapsed);
@@ -29,12 +32,12 @@ export default function NavBarShelter(props) {
 			<Collapse isOpen={!collapsed} navbar>
 				<Nav navbar>
 					<NavItem>
-						<Link href="/shelters/1" className="nav-item">
+						<Link to={`/shelters/${shelterId}`} className="nav-item">
 							<FaUserCheck className="ml-5" />
 						</Link>
 					</NavItem>
 					<NavItem>
-						<Link to={`/pets/shelters/`} className="nav-item">
+						<Link to={`/pets/shelters/${shelterId}`} className="nav-item">
 							<FaDog className="ml-5" />
 						</Link>
 					</NavItem>

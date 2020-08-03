@@ -19,9 +19,10 @@ export default function LoginShelter(props) {
 	const [password, setPassword] = useState("password");
 
 	const tokenShelter = useSelector(
-		(state) => state.authentication.tokenShelter
+		(state) => state.authentication.user.tokenShelter
 	);
 
+	console.log("vvvv", tokenShelter);
 	const dispatch = useDispatch();
 
 	const onSubmitLoginFormShelter = (e) => {

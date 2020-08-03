@@ -24,12 +24,10 @@ export const displayAPet = (params, id) => async (dispatch) => {
 	dispatch(getAPet(result.data));
 };
 
-export const displayAllPetsShelter = ({ params = {}, id }) => async (
-	dispatch
-) => {
-	// {pageSize: 1, limit: 10}
-	// fetch: localhost:3000/pets/1/detail?pageSize=${pageSize}&limit={limit} qs
-	const result = await axios.get(`/pets/shelters/${id}`, { ...params }); // localhost:3000/pets/1/detail?pageSize=1&limit=10
+export const displayAllPetsShelter = (params) => async (dispatch) => {
+	console.log("check parasssss", params);
+
+	const result = await axios.get(`/pets/shelters/${params.id}`);
 
 	dispatch(gePetsOfAShelter(result.data.pets));
 };
