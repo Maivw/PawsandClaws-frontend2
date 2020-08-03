@@ -15,36 +15,23 @@ export const setUser = (user) => ({ type: SET_USER, user });
 export const shelterProfileShowUp = (params) => async (dispatch) => {
 	const result = await axios.get(`http://localhost:8080/shelters/${params.id}`);
 
-	// return dispatch(setShelterUser(result.data.shelterUser));
+	return dispatch(setUser(result.data.shelterUser));
 };
 
-export const adopterProfileShowUp = ({ token, id }) => async (dispatch) => {
-	if (token) {
-		const result = await axios.get(`http://localhost:8080/users/${id}`, {
-			...token,
-			id,
-		});
-		// dispatch(setAdopter(result.data.user));
-	}
+export const adopterProfileShowUp = (params) => async (dispatch) => {
+	const result = await axios.get(`http://localhost:8080/users/${params.id}`);
+	console.log("mmmmm", result.data);
+	return dispatch(setUser(result.data));
 };
 
 export const loginAdopter = (params) => async (dispatch) => {
 	const result = await axios.post("/users/login", params);
+	console.log("yy444", result.data);
 	dispatch(setUser(result.data));
 };
 
 export const loginShelter = (params) => async (dispatch) => {
 	const result = await axios.post("/shelters/login", params);
-	/**
-	 * {
-    "tokenShelter": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxLCJlbWFpbCI6IkRlbW9ARGVtb1VzZXIuY29tIn0sImlhdCI6MTU5NjQ2OTg3MCwiZXhwIjoxNTk3MDc0NjcwfQ.uGCBOTvuv2WC90mwxl7iTkvPGd8WtdgfUOOr48DXrds",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxLCJlbWFpbCI6IkRlbW9ARGVtb1VzZXIuY29tIn0sImlhdCI6MTU5NjQ2OTg3MCwiZXhwIjoxNTk3MDc0NjcwfQ.uGCBOTvuv2WC90mwxl7iTkvPGd8WtdgfUOOr48DXrds",
-    "role": "Adopter",
-    "user": {
-        "id": 1
-    },
-    "name": "DemoUser"}
-	 */
 
 	dispatch(
 		setUser({

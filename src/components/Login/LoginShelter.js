@@ -20,7 +20,6 @@ export default function LoginShelter(props) {
 
 	const tokenShelter = useSelector((state) => state.authentication.user.token);
 
-	console.log("vvvv", tokenShelter);
 	const dispatch = useDispatch();
 
 	const onSubmitLoginFormShelter = (e) => {
@@ -29,7 +28,7 @@ export default function LoginShelter(props) {
 	};
 
 	if (tokenShelter) {
-		return <Redirect to="/homeShelter" />;
+		return <Redirect to="/" />;
 	}
 
 	return (

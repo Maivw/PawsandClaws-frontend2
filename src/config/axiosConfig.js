@@ -14,38 +14,30 @@ const api = create({
 // Add a request interceptor
 api.interceptors.request.use((config) => {
 	const state = store.getState();
+	console.log("WWWW", state.authentication.user.token);
+
 	return {
 		...config,
 		headers: {
 			...config.headers,
-			Authorization: `Bearer ${state.authentication.token}`,
-		},
-	};
-});
-api.interceptors.request.use((config) => {
-	const state = store.getState();
-	return {
-		...config,
-		headers: {
-			...config.headers,
-			Authorization: `Bearer ${state.authentication.tokenShelter}`,
+			Authorization: `Bearer ${state.authentication.user.token}`,
 		},
 	};
 });
 
 // Add a response interceptor
-api.interceptors.response.use(
-	(response) => response,
-	(error) => {
-		// Do something with response error
-		if (error.response.status === 401) {
-			window.alert("Something went wrong!. Please login again"); //eslint-disable-line
-			// window.location.reload();
-			store.dispatch(removeToken());
-			window.location.href = "/login";
-		}
-		return Promise.reject(error.response);
-	}
-);
+// api.interceptors.response.use(
+// 	(response) => response,
+// 	(error) => {
+// 		// Do something with response error
+// 		if (error.response.status === 401) {
+// 			window.alert("Something went wrong!. Please login again"); //eslint-disable-line
+// 			// window.location.reload();
+// 			store.dispatch(removeToken());
+// 			window.location.href = "/login";
+// 		}
+// 		return Promise.reject(error.response);
+// 	}
+// );
 
 export default api;

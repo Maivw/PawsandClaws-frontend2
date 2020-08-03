@@ -18,6 +18,7 @@ export default function LoginAdopter(props) {
 	const [email, setEmail] = useState("Demo@DemoUser.com");
 	const [password, setPassword] = useState("password");
 	const token = useSelector((state) => state.authentication.user.token);
+
 	const dispatch = useDispatch();
 	const onSubmitLoginFormAdopter = (e) => {
 		e.preventDefault();
@@ -25,7 +26,7 @@ export default function LoginAdopter(props) {
 	};
 
 	if (token) {
-		return <Redirect to="/homeAdopter" />;
+		return <Redirect to="/" />;
 	}
 
 	return (
