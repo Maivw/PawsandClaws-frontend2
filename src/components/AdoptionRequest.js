@@ -25,9 +25,7 @@ export default function AdoptionRequestModal(props) {
 
 	const onSend = (e) => {
 		e.preventDefault();
-		/**
-		 * petId, shelterId, message, isAccepted
-		 */
+
 		const data = {
 			petId: pet.pet.id,
 			shelterId: pet.pet.shelterId,
@@ -44,7 +42,9 @@ export default function AdoptionRequestModal(props) {
 	return (
 		<div>
 			<Modal isOpen={isOpen} toggle={toggleModal}>
-				<ModalHeader toggle={toggleModal}>Messge</ModalHeader>
+				<ModalHeader toggle={toggleModal} style={{ color: "#1b0c69" }}>
+					Messge
+				</ModalHeader>
 				<ModalBody>
 					<Input
 						type="textarea"
@@ -54,8 +54,15 @@ export default function AdoptionRequestModal(props) {
 					/>
 				</ModalBody>
 				<ModalFooter>
-					<Button color="secondary" onClick={toggleModal} onClick={onSend}>
-						Send
+					<Button
+						style={{
+							backgroundColor: "#b8adf3",
+							border: "1px solid white",
+						}}
+						onClick={toggleModal}
+						onClick={onSend}
+					>
+						<span style={{ color: "#423295" }}>Send</span>
 					</Button>
 				</ModalFooter>
 			</Modal>

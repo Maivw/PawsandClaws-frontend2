@@ -36,10 +36,10 @@ export default function LoginShelter(props) {
 	return (
 		<div className="app flex-row align-items-center">
 			<Container>
-				<p>
-					Welcome back! Thanks for all your hard work. We appreciate you placing
-					so many lovable dogs. We'd love for you to let us do our part to help
-					you along.
+				<p style={{ color: "#575656" }}>
+					<strong>Welcome back!</strong> Thanks for all your hard work. We
+					appreciate you placing so many lovable dogs. We'd love for you to let
+					us do our part to help you along.
 				</p>
 				<InputGroup className="mb-3">
 					<InputGroupAddon addonType="prepend">
@@ -68,7 +68,14 @@ export default function LoginShelter(props) {
 					/>
 				</InputGroup>
 				<Row>
-					<Button color="success" block onClick={onSubmitLoginFormShelter}>
+					<Button
+						onClick={onSubmitLoginFormShelter}
+						style={{
+							backgroundColor: "#b8adf3",
+							border: "1px solid white",
+							width: "100vw",
+						}}
+					>
 						Log in as a Shelter
 					</Button>
 				</Row>

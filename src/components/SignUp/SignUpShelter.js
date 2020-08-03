@@ -64,7 +64,7 @@ export default function SignUpShelter(props) {
 	return (
 		<div>
 			<Form>
-				<InputGroup className="mb-3">
+				<InputGroup className="mb-3 mt-2">
 					<InputGroupAddon addonType="prepend">
 						<InputGroupText>
 							<FaUserAlt />
@@ -210,7 +210,14 @@ export default function SignUpShelter(props) {
 						onChange={onChangeInputFields}
 					/>
 				</InputGroup>
-				<Button color="success" block onClick={onSubmitSignupShelter}>
+				<Button
+					style={{
+						backgroundColor: "#b8adf3",
+						border: "1px solid white",
+					}}
+					block
+					onClick={onSubmitSignupShelter}
+				>
 					Create Account
 				</Button>
 			</Form>

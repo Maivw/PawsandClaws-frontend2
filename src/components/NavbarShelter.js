@@ -19,24 +19,26 @@ export default function NavBarShelter(props) {
 	const toggleNavbar = () => setCollapsed(!collapsed);
 
 	return (
-		<Navbar color="faded" light>
+		<Navbar color="faded" light className="color-nav mt-2">
 			<NavbarBrand href="/" className="mr-auto ">
-				<h1 className="ml-5">PawsAndClaws</h1>
+				<h1 className="ml-5" style={{ color: "white" }}>
+					PawsAndClaws
+				</h1>
 			</NavbarBrand>
 			<NavbarToggler onClick={toggleNavbar} className="mr-2" />
 			<Collapse isOpen={!collapsed} navbar>
 				<Nav navbar>
 					<NavItem>
-						<NavLink href="/shelters/1">
+						<Link href="/shelters/1" className="nav-item">
 							<FaUserCheck className="ml-5" />
-						</NavLink>
-					</NavItem>
-					<NavItem>
-						<Link to={`/pets/shelters/`}>
-							<FaDog className="ml-5" />
 						</Link>
 					</NavItem>
 					<NavItem>
+						<Link to={`/pets/shelters/`} className="nav-item">
+							<FaDog className="ml-5" />
+						</Link>
+					</NavItem>
+					<NavItem className="nav-item">
 						<Logout />
 					</NavItem>
 				</Nav>

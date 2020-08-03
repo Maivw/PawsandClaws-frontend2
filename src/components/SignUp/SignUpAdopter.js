@@ -42,6 +42,10 @@ export default function SignUpAdopter(props) {
 			<div>
 				<div>
 					<InputGroup className="mb-3">
+						<p style={{ color: "#575656", marginTop: 10 }}>
+							If you're looking for a new furry companion, please fill out the
+							form!
+						</p>
 						<InputGroupAddon addonType="prepend">
 							<InputGroupText>
 								<FaUserAlt />
@@ -143,7 +147,14 @@ export default function SignUpAdopter(props) {
 							onChange={onChangeInputFields}
 						/>
 					</InputGroup>
-					<Button color="success" block onClick={onSignUpAdopter}>
+					<Button
+						style={{
+							backgroundColor: "#b8adf3",
+							border: "1px solid white",
+						}}
+						block
+						onClick={onSignUpAdopter}
+					>
 						Create Account
 					</Button>
 				</div>

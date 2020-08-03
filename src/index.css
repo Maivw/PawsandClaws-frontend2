@@ -1,0 +1,10 @@
+.color-nav {
+	background-color: blueviolet;
+}
+.login_photo {
+	object-fit: cover;
+	background-repeat: no-repeat, repeat;
+}
+.nav-item {
+	color: white;
+}

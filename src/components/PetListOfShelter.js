@@ -18,14 +18,11 @@ import { displayAllPetsShelter } from "../reducers/petManagement";
 export default function PetsListOfShelter(props) {
 	const pets = useSelector((state) => state.petManagement.shelterPets);
 	const token = useSelector((state) => state.authentication.token);
-	const id = props.match.params.id;
-	console.log("check111", id);
-	console.log("check112", token);
-	console.log("check113", pets);
+	const shelterId = useSelector((state) => state.authentication.user.id);
 
 	const dispatch = useDispatch();
 	useEffect(() => {
-		dispatch(displayAllPetsShelter({ id }));
+		dispatch(displayAllPetsShelter({ shelterId }));
 	}, []);
 
 	return (

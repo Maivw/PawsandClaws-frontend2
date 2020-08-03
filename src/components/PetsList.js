@@ -49,9 +49,24 @@ export default function PetsList(props) {
 													style={{ objectFit: "cover" }}
 												/>
 												<CardBody>
-													<CardTitle>Name: {pet.petName}</CardTitle>
-													<CardSubtitle>Age: {pet.age}</CardSubtitle>
-													<CardText>Breed: {pet.Breed.breedName}</CardText>
+													<CardTitle>
+														<p style={{ color: "#1b0c69", fontSize: 16 }}>
+															Name:
+															<span style={{ fontSize: 25, marginLeft: 5 }}>
+																{pet.petName}
+															</span>
+														</p>
+													</CardTitle>
+													<CardSubtitle>
+														<span style={{ color: "#1b0c69", fontSize: 16 }}>
+															Age: {pet.age}
+														</span>
+													</CardSubtitle>
+													<CardText>
+														<span style={{ color: "#1b0c69", fontSize: 16 }}>
+															Breed: {pet.Breed.breedName}
+														</span>
+													</CardText>
 													<div className="d-flex justify-content-sm-between">
 														<FaHeart
 															style={{
@@ -60,7 +75,14 @@ export default function PetsList(props) {
 															onClick={likeAPet(pet)}
 														/>
 														<Link to={`/pets/${pet.id}`}>
-															<Button>Detail</Button>
+															<Button
+																style={{
+																	backgroundColor: "#b8adf3",
+																	border: "1px solid white",
+																}}
+															>
+																<span style={{ color: "#423295" }}>Detail</span>
+															</Button>
 														</Link>
 													</div>
 												</CardBody>

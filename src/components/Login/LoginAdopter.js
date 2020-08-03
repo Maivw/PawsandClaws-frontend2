@@ -17,12 +17,8 @@ import { loginAdopter, loginShelter } from "../../reducers/authentication";
 export default function LoginAdopter(props) {
 	const [email, setEmail] = useState("Demo@DemoUser.com");
 	const [password, setPassword] = useState("password");
-
 	const token = useSelector((state) => state.authentication.token);
-	console.log("TOKEN", token);
-
 	const dispatch = useDispatch();
-
 	const onSubmitLoginFormAdopter = (e) => {
 		e.preventDefault();
 		dispatch(loginAdopter({ email, password }));
@@ -37,9 +33,9 @@ export default function LoginAdopter(props) {
 	}
 
 	return (
-		<div className="app flex-row align-items-center">
+		<div className="app flex-row align-items-center ">
 			<Container>
-				<p className="text-muted">
+				<p style={{ color: "#575656" }}>
 					We're glad you're back. Let's find you a best friend for thick and
 					thin. Login below and in no time you'll be walking through the world
 					with the perfect pup.
@@ -71,7 +67,14 @@ export default function LoginAdopter(props) {
 					/>
 				</InputGroup>
 				<Row>
-					<Button color="success" block onClick={onSubmitLoginFormAdopter}>
+					<Button
+						onClick={onSubmitLoginFormAdopter}
+						style={{
+							backgroundColor: "#b8adf3",
+							border: "1px solid white",
+							width: "100vw",
+						}}
+					>
 						Log in as an Adopter
 					</Button>
 				</Row>

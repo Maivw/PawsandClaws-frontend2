@@ -43,7 +43,9 @@ export const loginAdopter = (params) => async (dispatch) => {
 
 export const loginShelter = (params) => async (dispatch) => {
 	const result = await axios.post("/shelters/login", params);
+	console.log("fffff", result.data);
 	dispatch(setTokenShelter(result.data.tokenShelter));
+	dispatch(getShelterUser(result.data.user));
 };
 
 export const signupasAnAdopter = (params) => async (dispatch) => {
