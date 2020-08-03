@@ -108,7 +108,7 @@ export default function SignUp() {
 														width: 350,
 														borderRadius: 10,
 														objectFit: "cover",
-														height: "80vh",
+														height: "100vh",
 													}}
 												/>
 											</Col>

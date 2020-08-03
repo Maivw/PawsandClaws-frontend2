@@ -44,7 +44,7 @@ export default function PetDetail(props) {
 									className="petImage"
 									src={pet.pet.photo}
 									style={{
-										height: 700,
+										height: 600,
 										width: 500,
 										objectFit: "cover",
 										borderRadius: 10,
