@@ -40,7 +40,7 @@ export default function LoginAdopter(props) {
 					thin. Login below and in no time you'll be walking through the world
 					with the perfect pup.
 				</p>
-				<InputGroup className="mb-3">
+				<InputGroup className="mb-3 shadow">
 					<InputGroupAddon addonType="prepend">
 						<InputGroupText>
 							<FaUserAlt />
@@ -53,7 +53,7 @@ export default function LoginAdopter(props) {
 						onChange={(e) => setEmail(e.target.value)}
 					/>
 				</InputGroup>
-				<InputGroup className="mb-4">
+				<InputGroup className="mb-4 shadow">
 					<InputGroupAddon addonType="prepend">
 						<InputGroupText>
 							<FaLock />
@@ -69,10 +69,11 @@ export default function LoginAdopter(props) {
 				<Row>
 					<Button
 						onClick={onSubmitLoginFormAdopter}
+						shadow
+						block
 						style={{
 							backgroundColor: "#b8adf3",
 							border: "1px solid white",
-							width: "100vw",
 						}}
 					>
 						Log in as an Adopter

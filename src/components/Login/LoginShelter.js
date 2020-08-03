@@ -41,7 +41,7 @@ export default function LoginShelter(props) {
 					appreciate you placing so many lovable dogs. We'd love for you to let
 					us do our part to help you along.
 				</p>
-				<InputGroup className="mb-3">
+				<InputGroup className="mb-3 shadow">
 					<InputGroupAddon addonType="prepend">
 						<InputGroupText>
 							<FaUserAlt />
@@ -54,7 +54,7 @@ export default function LoginShelter(props) {
 						onChange={(e) => setEmail(e.target.value)}
 					/>
 				</InputGroup>
-				<InputGroup className="mb-4">
+				<InputGroup className="mb-4 shadow">
 					<InputGroupAddon addonType="prepend">
 						<InputGroupText>
 							<FaLock />
@@ -70,10 +70,11 @@ export default function LoginShelter(props) {
 				<Row>
 					<Button
 						onClick={onSubmitLoginFormShelter}
+						shadow
+						block
 						style={{
 							backgroundColor: "#b8adf3",
 							border: "1px solid white",
-							width: "100vw",
 						}}
 					>
 						Log in as a Shelter

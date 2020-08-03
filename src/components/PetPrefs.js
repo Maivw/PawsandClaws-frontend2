@@ -37,7 +37,7 @@ function SampleNextArrow(props) {
 			<FaArrowCircleRight
 				onClick={onClick}
 				className={className}
-				style={{ color: "red" }}
+				style={{ color: "#b8adf3", fontSize: 25 }}
 			/>
 		</div>
 	);
@@ -50,7 +50,7 @@ function SamplePrevArrow(props) {
 			<FaArrowCircleLeft
 				onClick={onClick}
 				className={className}
-				style={{ color: "red" }}
+				style={{ color: "#b8adf3", fontSize: 25 }}
 			/>
 		</div>
 	);
@@ -104,9 +104,9 @@ export default function PetPrefs(props) {
 		<div className="container mt-5">
 			<Row>
 				<Col xs="12" md="4">
-					<Card style={{ height: "100%" }}>
+					<Card className="shadow" style={{ height: "100%", borderRadius: 10 }}>
 						<CardHeader>
-							<h2>Find the right dog for you</h2>
+							<h1 style={{ color: "blueviolet" }}>Find your Buddy</h1>
 						</CardHeader>
 						<CardBody>
 							<Form
@@ -115,7 +115,7 @@ export default function PetPrefs(props) {
 								encType="multipart/form-data"
 								className="form-horizontal"
 							>
-								<InputGroup className="mb-3">
+								<InputGroup className="mb-3 shadow">
 									<Input
 										type="select"
 										name="breedId"
@@ -134,7 +134,7 @@ export default function PetPrefs(props) {
 											})}
 									</Input>
 								</InputGroup>
-								<InputGroup className="mb-3">
+								<InputGroup className="mb-3 shadow">
 									<Input
 										type="select"
 										name="age"
@@ -150,7 +150,7 @@ export default function PetPrefs(props) {
 										<option value="5">Mature (10+)</option>
 									</Input>
 								</InputGroup>
-								<InputGroup className="mb-3">
+								<InputGroup className="mb-3 shadow">
 									<Input
 										type="select"
 										name="size"
@@ -278,8 +278,14 @@ export default function PetPrefs(props) {
 							</Form>
 						</CardBody>
 						<Col className="d-flex justify-content-sm-end mb-3">
-							<Button color="success" onClick={onSend}>
-								Find
+							<Button
+								style={{
+									backgroundColor: "#b8adf3",
+									border: "1px solid white",
+								}}
+								onClick={onSend}
+							>
+								<span style={{ color: "#423295" }}>Find</span>
 							</Button>
 						</Col>
 					</Card>
@@ -294,14 +300,25 @@ export default function PetPrefs(props) {
 								return (
 									<div style={{ border: "1px solid red" }}>
 										<Col xl="6" lg="6" md="6" xs="12">
-											<Card style={{ width: "200%" }}>
+											<Card
+												style={{
+													width: "200%",
+													boxShadow: "2px 4px 8px 2px rgba(0, 0, 0, 0.2)",
+													borderRadius: 10,
+												}}
+											>
 												<img
 													top
 													width="100%"
 													height="400px"
 													src={pet.photo}
 													alt="Card image cap"
-													style={{ objectFit: "cover", backgroundColor: "red" }}
+													style={{
+														objectFit: "cover",
+														boxShadow: "2px 4px 8px 2px rgba(0, 0, 0, 0.2)",
+														borderTopLeftRadius: 10,
+														borderTopRightRadius: 10,
+													}}
 												/>
 												<CardBody>
 													<CardTitle>Name: {pet.petName}</CardTitle>
@@ -315,7 +332,14 @@ export default function PetPrefs(props) {
 															onClick={likeAPet(pet)}
 														/>
 														<Link to={`/pets/${pet.id}`}>
-															<Button>Detail</Button>
+															<Button
+																style={{
+																	backgroundColor: "#b8adf3",
+																	border: "1px solid white",
+																}}
+															>
+																<span style={{ color: "#423295" }}>Detail</span>
+															</Button>
 														</Link>
 													</div>
 												</CardBody>

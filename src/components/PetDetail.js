@@ -10,7 +10,6 @@ import { displayAPet } from "../reducers/petManagement";
 export default function PetDetail(props) {
 	const pet = useSelector((state) => state.petManagement.pet);
 	const id = props.match.params.id;
-	console.log("checid");
 	const [opened, setOpened] = useState(false);
 
 	const dispatch = useDispatch();
@@ -29,7 +28,11 @@ export default function PetDetail(props) {
 	return (
 		<div
 			className="container mt-5"
-			style={{ border: "1px solid #6c757d", borderRadius: 30 }}
+			style={{
+				border: "1px solid #6c757d",
+				borderRadius: 10,
+				boxShadow: "2px 4px 8px 2px rgba(0, 0, 0, 0.5)",
+			}}
 		>
 			<Row className="px-4 py-4 ml=4">
 				<AdoptionRequestModal isOpen={opened} toggle={isClosed} pet={pet} />
@@ -40,7 +43,13 @@ export default function PetDetail(props) {
 								<img
 									className="petImage"
 									src={pet.pet.photo}
-									style={{ height: 700, width: 500, objectFit: "cover" }}
+									style={{
+										height: 700,
+										width: 500,
+										objectFit: "cover",
+										borderRadius: 10,
+										boxShadow: "2px 4px 8px 2px rgba(0, 0, 0, 0.5)",
+									}}
 								/>
 							</Col>
 							<Col

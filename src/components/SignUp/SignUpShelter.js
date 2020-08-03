@@ -64,7 +64,7 @@ export default function SignUpShelter(props) {
 	return (
 		<div>
 			<Form>
-				<InputGroup className="mb-3 mt-2">
+				<InputGroup className="mb-3 mt-2 shadow">
 					<InputGroupAddon addonType="prepend">
 						<InputGroupText>
 							<FaUserAlt />
@@ -78,7 +78,7 @@ export default function SignUpShelter(props) {
 						onChange={onChangeInputFields}
 					/>
 				</InputGroup>
-				<InputGroup className="mb-3">
+				<InputGroup className="mb-3 shadow">
 					<InputGroupAddon addonType="prepend">
 						<InputGroupText>
 							<FaAsterisk />
@@ -92,7 +92,7 @@ export default function SignUpShelter(props) {
 						onChange={onChangeInputFields}
 					/>
 				</InputGroup>
-				<InputGroup className="mb-3">
+				<InputGroup className="mb-3 shadow">
 					<InputGroupAddon addonType="prepend">
 						<InputGroupText>
 							<FaPhoneAlt />
@@ -106,7 +106,7 @@ export default function SignUpShelter(props) {
 						onChange={onChangeInputFields}
 					/>
 				</InputGroup>
-				<InputGroup className="mb-3">
+				<InputGroup className="mb-3 shadow">
 					<InputGroupAddon addonType="prepend">
 						<InputGroupText>@</InputGroupText>
 					</InputGroupAddon>
@@ -118,7 +118,7 @@ export default function SignUpShelter(props) {
 						onChange={onChangeInputFields}
 					/>
 				</InputGroup>
-				<InputGroup className="mb-3">
+				<InputGroup className="mb-3 shadow">
 					<InputGroupAddon addonType="prepend">
 						<InputGroupText>
 							<FaHome />
@@ -132,7 +132,7 @@ export default function SignUpShelter(props) {
 						onChange={onChangeInputFields}
 					/>
 				</InputGroup>
-				<InputGroup className="mb-3">
+				<InputGroup className="mb-3 shadow">
 					<InputGroupAddon addonType="prepend">
 						<InputGroupText>
 							<FaCity />
@@ -146,7 +146,7 @@ export default function SignUpShelter(props) {
 						onChange={onChangeInputFields}
 					/>
 				</InputGroup>
-				<InputGroup className="mb-3">
+				<InputGroup className="mb-3 shadow">
 					<InputGroupAddon addonType="prepend">
 						<InputGroupText>
 							<FaSun />
@@ -168,7 +168,7 @@ export default function SignUpShelter(props) {
 						})}
 					</Input>
 				</InputGroup>
-				<InputGroup className="mb-3">
+				<InputGroup className="mb-3 shadow">
 					<InputGroupAddon addonType="prepend">
 						<InputGroupText>
 							<FaSun />
@@ -182,7 +182,7 @@ export default function SignUpShelter(props) {
 						onChange={onChangeInputFields}
 					/>
 				</InputGroup>
-				<InputGroup className="mb-3">
+				<InputGroup className="mb-3 shadow">
 					<InputGroupAddon addonType="prepend">
 						<InputGroupText>
 							<FaLock />
@@ -196,7 +196,7 @@ export default function SignUpShelter(props) {
 						onChange={onChangeInputFields}
 					/>
 				</InputGroup>
-				<InputGroup className="mb-4">
+				<InputGroup className="mb-4 shadow">
 					<InputGroupAddon addonType="prepend">
 						<InputGroupText>
 							<FaLock />
@@ -216,6 +216,7 @@ export default function SignUpShelter(props) {
 						border: "1px solid white",
 					}}
 					block
+					shadow
 					onClick={onSubmitSignupShelter}
 				>
 					Create Account

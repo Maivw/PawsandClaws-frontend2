@@ -81,6 +81,7 @@ export default function Login() {
 																	marginTop: "20%",
 																	textAlign: "center",
 																	color: "#575656",
+																	textDecoration: "none",
 																}}
 															>
 																Need an account? <strong>Register Now!</strong>

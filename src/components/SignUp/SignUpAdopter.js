@@ -41,7 +41,7 @@ export default function SignUpAdopter(props) {
 		<>
 			<div>
 				<div>
-					<InputGroup className="mb-3">
+					<InputGroup className="mb-3 shadow">
 						<p style={{ color: "#575656", marginTop: 10 }}>
 							If you're looking for a new furry companion, please fill out the
 							form!
@@ -59,7 +59,7 @@ export default function SignUpAdopter(props) {
 							onChange={onChangeInputFields}
 						/>
 					</InputGroup>
-					<InputGroup className="mb-3">
+					<InputGroup className="mb-3 shadow">
 						<InputGroupAddon addonType="prepend">
 							<InputGroupText>
 								<FaUserAlt />
@@ -73,7 +73,7 @@ export default function SignUpAdopter(props) {
 							onChange={onChangeInputFields}
 						/>
 					</InputGroup>
-					<InputGroup className="mb-3">
+					<InputGroup className="mb-3 shadow">
 						<InputGroupAddon addonType="prepend">
 							<InputGroupText>
 								<FaUserAlt />
@@ -88,7 +88,7 @@ export default function SignUpAdopter(props) {
 							onChange={onChangeInputFields}
 						/>
 					</InputGroup>
-					<InputGroup className="mb-3">
+					<InputGroup className="mb-3 shadow">
 						<InputGroupAddon addonType="prepend">
 							<InputGroupText>@</InputGroupText>
 						</InputGroupAddon>
@@ -101,7 +101,7 @@ export default function SignUpAdopter(props) {
 							onChange={onChangeInputFields}
 						/>
 					</InputGroup>
-					<InputGroup className="mb-3">
+					<InputGroup className="mb-3 shadow">
 						<InputGroupAddon addonType="prepend">
 							<InputGroupText>
 								<FaPhoneAlt />
@@ -117,7 +117,7 @@ export default function SignUpAdopter(props) {
 						/>
 					</InputGroup>
 
-					<InputGroup className="mb-3">
+					<InputGroup className="mb-3 shadow">
 						<InputGroupAddon addonType="prepend">
 							<InputGroupText>
 								<FaLock />
@@ -132,7 +132,7 @@ export default function SignUpAdopter(props) {
 							onChange={onChangeInputFields}
 						/>
 					</InputGroup>
-					<InputGroup className="mb-4">
+					<InputGroup className="mb-4 shadow">
 						<InputGroupAddon addonType="prepend">
 							<InputGroupText>
 								<FaLock />
@@ -153,6 +153,7 @@ export default function SignUpAdopter(props) {
 							border: "1px solid white",
 						}}
 						block
+						shadow
 						onClick={onSignUpAdopter}
 					>
 						Create Account

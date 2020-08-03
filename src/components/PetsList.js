@@ -39,14 +39,24 @@ export default function PetsList(props) {
 									const fav = favPets.find((f) => f.id === pet.id);
 									return (
 										<Col xl="3" lg="3" md="3" xs="12" className="mt-4">
-											<Card>
+											<Card
+												style={{
+													borderRadius: 10,
+													boxShadow: "2px 4px 8px 2px rgba(0, 0, 0, 0.2)",
+												}}
+											>
 												<CardImg
 													top
 													width="100%"
 													height="400px"
 													src={pet.photo}
 													alt="Card image cap"
-													style={{ objectFit: "cover" }}
+													style={{
+														objectFit: "cover",
+														borderTopLeftRadius: 10,
+														borderTopRightRadius: 10,
+														boxShadow: "2px 4px 8px 2px rgba(0, 0, 0, 0.2)",
+													}}
 												/>
 												<CardBody>
 													<CardTitle>
