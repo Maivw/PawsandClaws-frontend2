@@ -13,7 +13,7 @@ import {
 	Col,
 } from "reactstrap";
 
-import { displayAllPetsShelter } from "../reducers/petManagement";
+import { displayAllPetsShelter, deleteAPet } from "../reducers/petManagement";
 import Navbar from "./NavBar";
 export default function PetsListOfShelter(props) {
 	const pets = useSelector((state) => state.petManagement.shelterPets);
@@ -24,7 +24,9 @@ export default function PetsListOfShelter(props) {
 	useEffect(() => {
 		dispatch(displayAllPetsShelter({ id }));
 	}, []);
-
+	const onDelete = (pet) => () => {
+		dispatch(deleteAPet(pet));
+	};
 	return (
 		<>
 			<div>
@@ -77,6 +79,15 @@ export default function PetsListOfShelter(props) {
 																<span style={{ color: "#423295" }}>Edit</span>
 															</Button>
 														</Link>
+														<Button
+															style={{
+																backgroundColor: "#b8adf3",
+																border: "1px solid white",
+															}}
+															onClick={onDelete(pet)}
+														>
+															<span style={{ color: "#423295" }}>Remove</span>
+														</Button>
 													</div>
 												</CardBody>
 											</Card>

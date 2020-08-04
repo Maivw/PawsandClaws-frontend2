@@ -78,6 +78,14 @@ export default function LovePets(props) {
 															>
 																<span style={{ color: "#423295" }}>Detail</span>
 															</Button>
+															<Button
+																style={{
+																	backgroundColor: "#b8adf3",
+																	border: "1px solid white",
+																}}
+															>
+																<span style={{ color: "#423295" }}>Remove</span>
+															</Button>
 														</Link>
 													</div>
 												</CardBody>

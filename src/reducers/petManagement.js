@@ -30,8 +30,6 @@ export const displayAPet = (params, id) => async (dispatch) => {
 };
 
 export const displayAllPetsShelter = (params) => async (dispatch) => {
-	console.log("check parasssss", params);
-
 	const result = await axios.get(`/pets/shelters/${params.id}`);
 
 	dispatch(gePetsOfAShelter(result.data.pets));
@@ -50,9 +48,9 @@ export const postANewPet = (params) => async (dispatch) => {
 	dispatch(getAllPets());
 };
 export const deleteAPet = (params) => async (dispatch) => {
-	const result = await axios.delete(`/pets/${params.id}`, { ...params });
+	const result = await axios.delete(`/pets/${params.id}`);
 
-	dispatch(removeAPet(result.data));
+	dispatch(removeAPet(result.data.pet));
 };
 
 export const shelterEditAPet = ({ fields, id }) => async (dispatch) => {
@@ -63,6 +61,7 @@ export const shelterEditAPet = ({ fields, id }) => async (dispatch) => {
 const inititialState = {
 	pets: [],
 	favoritePets: [],
+	shelterPets: [],
 };
 export default function reducer(state = inititialState, action) {
 	switch (action.type) {
@@ -95,11 +94,11 @@ export default function reducer(state = inititialState, action) {
 			};
 		}
 		case DELETE_A_PET: {
-			const newState = [...state.pets];
+			const newState = [...state.shelterPets];
 			const restPets = newState.filter((p) => p.id !== action.pet);
 			return {
 				...state,
-				pets: [...restPets],
+				shelterPets: [...restPets],
 			};
 		}
 		case GET_PETS_OF_SHELTERS: {
