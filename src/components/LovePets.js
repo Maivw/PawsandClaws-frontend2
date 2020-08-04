@@ -11,30 +11,22 @@ import {
 	Button,
 	Row,
 	Col,
+	Container,
 } from "reactstrap";
-import { FaHeart } from "react-icons/fa";
-import { displayAllPets, favoriteAPet } from "../reducers/petManagement";
+import NavBar from "./NavBar";
 
-export default function PetsList(props) {
-	const pets = useSelector((state) => state.petManagement.pets);
-	const favPets = useSelector((state) => state.petManagement.favoritePets);
-	const dispatch = useDispatch();
-	useEffect(() => {
-		dispatch(displayAllPets());
-	}, []);
+export default function LovePets(props) {
+	const pets = useSelector((state) => state.petManagement.favoritePets);
 
-	const likeAPet = (pet) => () => {
-		dispatch(favoriteAPet(pet));
-	};
 	return (
 		<>
 			<div>
+				<NavBar />
 				<Row className="justify-content-center">
 					<Col xl="9" lg="9" md="9" xs="12">
 						<Row>
 							{pets &&
 								pets.map((pet) => {
-									const fav = favPets.find((f) => f.id === pet.id);
 									return (
 										<Col xl="3" lg="3" md="3" xs="12" className="mt-4">
 											<Card
@@ -77,12 +69,6 @@ export default function PetsList(props) {
 														</span>
 													</CardText>
 													<div className="d-flex justify-content-sm-between">
-														<FaHeart
-															style={{
-																color: fav ? "red" : "grey",
-															}}
-															onClick={likeAPet(pet)}
-														/>
 														<Link to={`/pets/${pet.id}`}>
 															<Button
 																style={{
@@ -91,6 +77,14 @@ export default function PetsList(props) {
 																}}
 															>
 																<span style={{ color: "#423295" }}>Detail</span>
+															</Button>
+															<Button
+																style={{
+																	backgroundColor: "#b8adf3",
+																	border: "1px solid white",
+																}}
+															>
+																<span style={{ color: "#423295" }}>Remove</span>
 															</Button>
 														</Link>
 													</div>

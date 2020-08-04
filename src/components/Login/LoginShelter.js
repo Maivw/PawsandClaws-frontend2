@@ -15,14 +15,11 @@ import { loginShelter } from "../../reducers/authentication";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 
 export default function LoginShelter(props) {
-	const [email, setEmail] = useState("Demo@DemoUser.com");
+	const [email, setEmail] = useState("Demo1@DemoShelterUser.com");
 	const [password, setPassword] = useState("password");
 
-	const tokenShelter = useSelector(
-		(state) => state.authentication.user.tokenShelter
-	);
+	const tokenShelter = useSelector((state) => state.authentication.user.token);
 
-	console.log("vvvv", tokenShelter);
 	const dispatch = useDispatch();
 
 	const onSubmitLoginFormShelter = (e) => {
@@ -31,7 +28,7 @@ export default function LoginShelter(props) {
 	};
 
 	if (tokenShelter) {
-		return <Redirect to="/homeShelter" />;
+		return <Redirect to="/" />;
 	}
 
 	return (
@@ -52,6 +49,7 @@ export default function LoginShelter(props) {
 						type="text"
 						placeholder="Username"
 						autoComplete="username"
+						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 					/>
 				</InputGroup>
@@ -65,6 +63,7 @@ export default function LoginShelter(props) {
 						type="password"
 						placeholder="Password"
 						autoComplete="current-password"
+						value={password}
 						onChange={(e) => setPassword(e.target.value)}
 					/>
 				</InputGroup>

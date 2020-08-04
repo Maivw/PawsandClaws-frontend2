@@ -29,9 +29,9 @@ export default function SignUp() {
 			<div className="app flex-row align-items-center mt-5">
 				<Container>
 					<Row className="justify-content-center">
-						<Col xl="9" lg="9" md="9" xs="12">
+						<Col xl="12" lg="12" md="12" xs="12">
 							<CardGroup>
-								<Card className="mx-4 shadow">
+								<Card className="mx-4 shadow" style={{ borderRadius: 10 }}>
 									<CardBody className="p-4">
 										<Row>
 											<Col>
@@ -101,14 +101,14 @@ export default function SignUp() {
 											</Col>
 											<Col>
 												<img
-													src="https://static1.squarespace.com/static/53b1eedce4b0ea2f4d03027b/56327ffee4b0a942d54710d6/56327fffe4b0ca3d190b3062/1446150144264/ariaL.jpg"
+													// src="https://static1.squarespace.com/static/53b1eedce4b0ea2f4d03027b/56327ffee4b0a942d54710d6/56327fffe4b0ca3d190b3062/1446150144264/ariaL.jpg"
+													src="https://images.pexels.com/photos/1089394/pexels-photo-1089394.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
 													alt="loginphoto"
 													className="login_photo"
 													style={{
-														width: 350,
+														width: 500,
 														borderRadius: 10,
 														objectFit: "cover",
-														height: "100vh",
 													}}
 												/>
 											</Col>

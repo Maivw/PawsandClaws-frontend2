@@ -23,9 +23,7 @@ import {
 
 export default function SignUpShelter(props) {
 	const states = useSelector((state) => state.inforManagement.states);
-	const tokenShelter = useSelector(
-		(state) => state.authentication.tokenShelter
-	);
+	const tokenShelter = useSelector((state) => state.authentication.user.token);
 	const dispatch = useDispatch();
 	const [inputFields, setInputFields] = useState({
 		shelterName: "",

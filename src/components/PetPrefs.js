@@ -143,7 +143,7 @@ export default function PetPrefs(props) {
 									>
 										<option>Age</option>
 										<option value="1">Puppy (0-1)</option>
-										<option value="2">Young (1-3</option>
+										<option value="2">Young (1-3)</option>
 										<option value="3">Middle Aged (3-7)</option>
 										<option value="4">Adult (7-10)</option>
 										<option value="5">Mature (10+)</option>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
 	Card,
 	CardBody,
@@ -13,72 +13,79 @@ import {
 	Label,
 	Button,
 } from "reactstrap";
-
-import { postANewPet } from "../reducers/petManagement";
+import { FaArrowCircleLeft } from "react-icons/fa";
+import { shelterEditAPet } from "../reducers/petManagement";
 import { showBreeds } from "../reducers/inforManagement";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-export default function CreateNewPet(props) {
+const defaultState = {
+	petName: "",
+	photo: "",
+	breedId: "",
+	age: "",
+	size: "",
+	description: "",
+	sex: 1,
+	isOkayKids: "true",
+	isOkayPets: "true",
+	isAdopted: "false",
+};
+
+export default function EditAPet(props) {
+	const shelterId = useSelector((state) => state.authentication.user.id);
+	console.log("kjkkj", shelterId);
+	const id = props.match.params.id;
 	const dispatch = useDispatch();
-	const [file, setFile] = useState("");
-	const [imageFile, setImageFile] = useState("");
 	const breeds = useSelector((state) => state.inforManagement.breeds);
-	const [fields, setFields] = useState({
-		petName: "",
-		photo: "",
-		breedId: "",
-		age: "",
-		size: "",
-		description: "",
-		sex: 1,
-		isOkayKids: "true",
-		isOkayPets: "true",
-		isAdopted: "false",
-	});
+	const [fields, setFields] = useState(defaultState);
+	console.log("breeds", breeds);
 	useEffect(() => {
 		dispatch(showBreeds());
 	}, []);
 
 	const onSend = (e) => {
-		var data = new FormData();
-		console.log("fields", fields);
-		console.log("file", file);
-		data.append("petName", fields.petName);
-		data.append("photo", file);
-		data.append("breedId", fields.breedId);
-		data.append("age", fields.age);
-		data.append("size", fields.size);
-		data.append("description", fields.description);
-		data.append("sex", fields.sex);
-		data.append("isOkayKids", fields.isOkayKids);
-		data.append("isOkayPets", fields.isOkayPets);
-		data.append("isAdopted", fields.isAdopted);
+		e.preventDefault();
+		// console.log("Fielts", fields);
+		// const obj = { fields, id };
+		// dispatch(shelterEditAPet(obj));
+		// setFields(defaultState);
+		toast("Edit successfully!");
+	};
 
-		dispatch(postANewPet(data));
-	};
-	const handleChangeUpload = (e) => {
-		setImageFile(URL.createObjectURL(e.target.files[0]));
-		setFile(e.target.files[0]);
-	};
 	const changeFields = (e) => {
 		const { name, value } = e.target;
 		setFields((prev) => ({ ...prev, [name]: value }));
 	};
 
 	return (
-		<div className="container">
-			<Col xs="12" md="9">
+		<div className="container mt-5">
+			<ToastContainer />
+			<Col xs="12" md="9" className="px-4">
 				<Card>
-					<CardHeader>
-						<strong>Add </strong> a new pet
+					<CardHeader className="d-flex justify-content-between ">
+						<span>
+							<h4 style={{ color: "blueviolet" }}>EDIT</h4>
+						</span>
+						<span>
+							<Link to={`/pets/edit/shelters/${shelterId}`}>
+								<FaArrowCircleLeft
+									style={{
+										color: "#b8adf3",
+										fontSize: 25,
+									}}
+								/>
+							</Link>
+						</span>
 					</CardHeader>
-					<CardBody>
+					<CardBody className="px-4 mt-2">
 						<Form
 							action=""
 							method="post"
 							encType="multipart/form-data"
-							className="form-horizontal"
+							className="form-horizontal "
 						>
-							<InputGroup className="mb-3">
+							<InputGroup className="mb-3 shadow">
 								<Input
 									type="text"
 									name="petName"
@@ -87,7 +94,7 @@ export default function CreateNewPet(props) {
 									onChange={changeFields}
 								/>
 							</InputGroup>
-							{/* <InputGroup className="mb-3">
+							<InputGroup className="mb-3 shadow">
 								<Input
 									type="text"
 									name="photo"
@@ -95,8 +102,8 @@ export default function CreateNewPet(props) {
 									value={fields.photo}
 									onChange={changeFields}
 								/>
-							</InputGroup> */}
-							<InputGroup className="mb-3">
+							</InputGroup>
+							<InputGroup className="mb-3 shadow">
 								<Input
 									type="select"
 									name="breedId"
@@ -115,7 +122,7 @@ export default function CreateNewPet(props) {
 										})}
 								</Input>
 							</InputGroup>
-							<InputGroup className="mb-3">
+							<InputGroup className="mb-3 shadow">
 								<Input
 									type="select"
 									name="age"
@@ -131,7 +138,7 @@ export default function CreateNewPet(props) {
 									<option value="5">Mature (10+)</option>
 								</Input>
 							</InputGroup>
-							<InputGroup className="mb-3">
+							<InputGroup className="mb-3 shadow">
 								<Input
 									type="select"
 									name="size"
@@ -147,7 +154,7 @@ export default function CreateNewPet(props) {
 									<option value="5">X-large</option>
 								</Input>
 							</InputGroup>
-							<InputGroup className="mb-3">
+							<InputGroup className="mb-3 shadow">
 								<Input
 									type="textarea"
 									name="description"
@@ -307,17 +314,8 @@ export default function CreateNewPet(props) {
 							}}
 							onClick={onSend}
 						>
-							<span style={{ color: "#423295" }}>Add</span>
+							<span style={{ color: "#423295" }}>Edit</span>
 						</Button>
-						<InputGroup className="mb-3">
-							<Input
-								name="image_url"
-								type="file"
-								placeholder="Image file"
-								value={fields.photo}
-								onChange={handleChangeUpload}
-							/>
-						</InputGroup>
 					</Col>
 				</Card>
 			</Col>
