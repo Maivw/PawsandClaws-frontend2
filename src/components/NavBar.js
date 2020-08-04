@@ -66,7 +66,9 @@ export default function NavBar(props) {
 								</Link>
 							</NavItem>
 							<NavItem className="nav-item">
-								<FaHeart className="ml-5" />
+								<Link to="/lovepets" style={{ color: "white" }}>
+									<FaHeart className="ml-5" />
+								</Link>
 							</NavItem>
 							<NavItem className="nav-item">
 								<Logout />

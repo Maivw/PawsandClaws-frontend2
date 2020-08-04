@@ -16,16 +16,15 @@ export const setUser = (user) => ({ type: SET_USER, user });
 
 export const shelterProfileShowUp = (params) => async (dispatch) => {
 	const result = await axios.get(`http://localhost:8080/shelters/${params.id}`);
-	console.log("setProfile", result.data);
 
 	return dispatch(setProfile(result.data.shelterUser));
 };
 
 export const adopterProfileShowUp = (params) => async (dispatch) => {
 	const result = await axios.get(`http://localhost:8080/users/${params.id}`);
-	console.log("mmmmm", result.data);
+	console.log("setProfile", result.data.user);
 
-	return dispatch(setUser(result.data));
+	return dispatch(setProfile(result.data.user));
 };
 
 export const loginAdopter = (params) => async (dispatch) => {

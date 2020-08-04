@@ -14,6 +14,7 @@ import PetsListOfShelter from "./components/PetListOfShelter";
 import Home from "./components/Home";
 import PetsListOfShelterEdit from "./components/PetsShelterListEdit";
 import EditAPet from "./components/EditAPet";
+import LovePets from "./components/LovePets";
 
 function App() {
 	return (
@@ -31,6 +32,7 @@ function App() {
 					<Route exact path="/shelters/:id" component={ShelterProfile} />
 					<Route exact path="/adopters/:id" component={AdopterProfile} />
 					<Route exact path="/preferredPet" component={PetPrefs} />
+					<Route exact path="/lovepets" component={LovePets} />
 					<Route
 						exact
 						path="/pets/shelters/:id"
