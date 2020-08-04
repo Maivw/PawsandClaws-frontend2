@@ -4,10 +4,10 @@ import { useParams, Link } from "react-router-dom";
 import { Container, Row, Col, Table } from "reactstrap";
 import { adopterProfileShowUp } from "../reducers/authentication";
 import { displayAllReqsOfAdopters } from "../reducers/inforManagement";
-
+import Navbar from "./NavBar";
 export default function AdopterProfile(props) {
 	const { id } = useParams();
-	console.log("userPar", id);
+
 	const adopter = useSelector((state) => state.authentication.user.user);
 	console.log("nguoinuoi", adopter);
 	const requests = useSelector((state) => state.inforManagement.requests);
@@ -24,6 +24,7 @@ export default function AdopterProfile(props) {
 
 	return (
 		<div>
+			<Navbar />
 			<Container
 				className="mt-5"
 				style={{
@@ -52,8 +53,16 @@ export default function AdopterProfile(props) {
 						</Row>
 					</Col>
 				)}
-				<h4 className="px-4" style={{ color: "#423295" }}>
+				<h4
+					className="px-4 d-flex justify-content-between"
+					style={{ color: "#423295" }}
+				>
 					<strong>Your Request:</strong>
+					<strong style={{ textDecoration: "none" }}>
+						<Link to="/preferredPet">
+							<span style={{ color: "#423295" }}>Find Pets</span>
+						</Link>
+					</strong>
 				</h4>
 				<div className="px-4">
 					<Table

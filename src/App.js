@@ -12,6 +12,8 @@ import AdopterProfile from "./components/AdopterProfile";
 import PetPrefs from "./components/PetPrefs";
 import PetsListOfShelter from "./components/PetListOfShelter";
 import Home from "./components/Home";
+import PetsListOfShelterEdit from "./components/PetsShelterListEdit";
+import EditAPet from "./components/EditAPet";
 
 function App() {
 	return (
@@ -25,6 +27,7 @@ function App() {
 					<Route exact path="/pets" component={PetsList} />
 					<Route exact path="/pets/new" component={CreateNewPet} />
 					<Route exact path="/pets/:id" component={PetDetail} />
+					<Route exact path="/pets/edit/:id" component={EditAPet} />
 					<Route exact path="/shelters/:id" component={ShelterProfile} />
 					<Route exact path="/adopters/:id" component={AdopterProfile} />
 					<Route exact path="/preferredPet" component={PetPrefs} />
@@ -32,6 +35,11 @@ function App() {
 						exact
 						path="/pets/shelters/:id"
 						component={PetsListOfShelter}
+					/>
+					<Route
+						exact
+						path="/pets/edit/shelters/:id"
+						component={PetsListOfShelterEdit}
 					/>
 				</Switch>
 			</BrowserRouter>

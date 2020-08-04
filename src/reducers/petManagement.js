@@ -3,6 +3,7 @@ const GET_ALL_PETS = "GET_ALL_PETS ";
 const GET_A_PET = "GET_A_PET ";
 const FAVORITE_PET = "FAVORITE_PET";
 const DELETE_A_PET = "DELETE_A_PET";
+const EDIT_A_PET = "EDIT_A_PET ";
 const GET_PETS_OF_SHELTERS = "GET_PETS_OF_SHELTERS";
 
 export const getAllPets = (pets) => ({ type: GET_ALL_PETS, pets });
@@ -11,6 +12,10 @@ export const removeAPet = (pet) => ({ type: DELETE_A_PET, pet });
 export const gePetsOfAShelter = (shelterPets) => ({
 	type: GET_PETS_OF_SHELTERS,
 	shelterPets,
+});
+export const editAPet = (pet) => ({
+	type: EDIT_A_PET,
+	pet,
 });
 
 export const displayAllPets = (params = {}) => async (dispatch) => {
@@ -44,10 +49,16 @@ export const postANewPet = (params) => async (dispatch) => {
 
 	dispatch(getAllPets());
 };
-export const deleteAPet = (params, id) => async (dispatch) => {
-	const result = await axios.delete(`/pets/${id}`, { ...params });
+export const deleteAPet = (params) => async (dispatch) => {
+	const result = await axios.delete(`/pets/${params.id}`, { ...params });
 
 	dispatch(removeAPet(result.data));
+};
+
+export const shelterEditAPet = ({ fields, id }) => async (dispatch) => {
+	const result = await axios.put(`/pets/${id}`, { ...fields });
+	dispatch(editAPet(result.data.pet));
+	dispatch(getAllPets());
 };
 const inititialState = {
 	pets: [],
@@ -95,6 +106,13 @@ export default function reducer(state = inititialState, action) {
 			return {
 				...state,
 				shelterPets: action.shelterPets,
+			};
+		}
+
+		case EDIT_A_PET: {
+			return {
+				...state,
+				pet: action.pet,
 			};
 		}
 		default:

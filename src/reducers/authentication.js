@@ -1,10 +1,12 @@
 import axios from "../config/axiosConfig";
 const SET_TOKEN = "SET_TOKEN";
+const SET_PROFILE = "SET_PROFILE";
 const SET_TOKEN_SHELTER = "SET_TOKEN_SHELTER ";
 const SET_USER = "SET_USER ";
 const REMOVE_TOKEN = "REMOVE_TOKEN";
 
 export const setToken = (token) => ({ type: SET_TOKEN, token });
+export const setProfile = (userProfile) => ({ type: SET_PROFILE, userProfile });
 export const setTokenShelter = (tokenShelter) => ({
 	type: SET_TOKEN_SHELTER,
 	tokenShelter,
@@ -14,8 +16,9 @@ export const setUser = (user) => ({ type: SET_USER, user });
 
 export const shelterProfileShowUp = (params) => async (dispatch) => {
 	const result = await axios.get(`http://localhost:8080/shelters/${params.id}`);
+	console.log("setProfile", result.data);
 
-	return dispatch(setUser(result.data.shelterUser));
+	return dispatch(setProfile(result.data.shelterUser));
 };
 
 export const adopterProfileShowUp = (params) => async (dispatch) => {
@@ -81,6 +84,13 @@ export default function reducer(state = initState, action) {
 			return {
 				...state,
 				user: action.user,
+			};
+		}
+
+		case SET_PROFILE: {
+			return {
+				...state,
+				userProfile: action.userProfile,
 			};
 		}
 

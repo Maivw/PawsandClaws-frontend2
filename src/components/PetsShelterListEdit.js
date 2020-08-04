@@ -15,7 +15,7 @@ import {
 
 import { displayAllPetsShelter } from "../reducers/petManagement";
 import Navbar from "./NavBar";
-export default function PetsListOfShelter(props) {
+export default function PetsListOfShelterEdit(props) {
 	const pets = useSelector((state) => state.petManagement.shelterPets);
 	const token = useSelector((state) => state.authentication.token);
 	const { id } = useParams();
@@ -67,7 +67,7 @@ export default function PetsListOfShelter(props) {
 													<CardSubtitle>Age: {pet.age}</CardSubtitle>
 													<CardText>Breed: {pet.Breed.breedName}</CardText>
 													<div className="d-flex justify-content-sm-between">
-														<Link to={`/pets/${pet.id}`}>
+														<Link to={`/pets/edit/${pet.id}`}>
 															<Button
 																style={{
 																	backgroundColor: "#b8adf3",

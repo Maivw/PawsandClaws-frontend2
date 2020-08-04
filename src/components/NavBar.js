@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 export default function NavBar(props) {
 	const { shelterId, adopterId } = props;
 	const role = useSelector((state) => state.authentication.user.role);
+	console.log("getrole", role);
 
 	const [collapsed, setCollapsed] = useState(true);
 

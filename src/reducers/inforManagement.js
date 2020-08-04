@@ -50,7 +50,6 @@ export const displayAllReqsOfAdopters = (params = {}, id) => async (
 };
 
 export const createPrefPetForm = (params) => async (dispatch) => {
-	debugger;
 	const result = await axios.post(`/preferredPets`, {
 		...params,
 	});
