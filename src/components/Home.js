@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "./NavBar";
+import { Col, Row } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
 import PetsListOfShelter from "./PetListOfShelter";
 import PetsList from "./PetsList";
@@ -13,13 +14,23 @@ export default function Home(props) {
 	return (
 		<div>
 			<Navbar shelterId={shelterId} adopterId={adopterId} />
-			<Carousel />
+			<Row className="d-flex  justify-content-center mb-4">
+				<Col
+					xl="10"
+					lg="10"
+					md="10"
+					xs="12"
+					style={{
+						backgroundColor: "#f8f4f4",
+						borderBottomLeftRadius: 10,
+						borderBottomRightRadius: 10,
+					}}
+				>
+					<Carousel />
+				</Col>
+			</Row>
+
 			<PetsList />
 		</div>
 	);
-}
-
-{
-	/* /* <NavbarShelter id={shelterId} />
-			<PetsListOfShelter id={shelterId} /> */
 }
