@@ -12,9 +12,7 @@ import {
 	Row,
 	Col,
 } from "reactstrap";
-
 import { FaHeart } from "react-icons/fa";
-
 import { displayAllPets, favoriteAPet } from "../reducers/petManagement";
 
 export default function PetsList(props) {

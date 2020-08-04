@@ -67,7 +67,7 @@ export default function PetsListOfShelter(props) {
 													<CardSubtitle>Age: {pet.age}</CardSubtitle>
 													<CardText>Breed: {pet.Breed.breedName}</CardText>
 													<div className="d-flex justify-content-sm-between">
-														<Link to={`/pets/${pet.id}`}>
+														<Link to={`/pets/edit/${pet.id}`}>
 															<Button
 																style={{
 																	backgroundColor: "#b8adf3",
