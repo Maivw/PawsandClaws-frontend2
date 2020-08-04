@@ -22,14 +22,11 @@ export const shelterProfileShowUp = (params) => async (dispatch) => {
 
 export const adopterProfileShowUp = (params) => async (dispatch) => {
 	const result = await axios.get(`http://localhost:8080/users/${params.id}`);
-	console.log("setProfile", result.data.user);
-
 	return dispatch(setProfile(result.data.user));
 };
 
 export const loginAdopter = (params) => async (dispatch) => {
 	const result = await axios.post("/users/login", params);
-	console.log("yy444", result.data.token);
 	dispatch(setUser({ ...result.data, token: result.data.token }));
 };
 
@@ -45,7 +42,6 @@ export const loginShelter = (params) => async (dispatch) => {
 };
 
 export const signupasAnAdopter = (params) => async (dispatch) => {
-	console.log("singupParams", params);
 	const result = await axios.post("/users", { ...params });
 	dispatch(setUser(result.data));
 };

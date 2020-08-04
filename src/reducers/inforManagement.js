@@ -28,7 +28,7 @@ export const showBreeds = (params) => async (dispatch) => {
 	dispatch(loadBreeds(result.data.breeds));
 };
 export const sendAdoptionRequest = (params) => async (dispatch) => {
-	const result = await axios.post("/adoptionRequests", { ...params }); // shelterId, name, dogID
+	const result = await axios.post("/adoptionRequests", { ...params });
 
 	dispatch(displayAllReqs(params, params.shelterId));
 };

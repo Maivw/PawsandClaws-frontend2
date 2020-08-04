@@ -19,7 +19,7 @@ export default function PetsListOfShelter(props) {
 	const pets = useSelector((state) => state.petManagement.shelterPets);
 	const token = useSelector((state) => state.authentication.token);
 	const { id } = useParams();
-
+	console.log("ghgghig", id);
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(displayAllPetsShelter({ id }));
