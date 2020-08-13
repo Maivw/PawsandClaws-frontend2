@@ -5,8 +5,6 @@ An app to connect people looking for a furry friend with pets that need homes.
   <img src="https://github.com/Maivw/PawsandClaws-frontend2/blob/master/recording2.gif?raw=true"/>
 </p>
 
-
-
 ## [Live site]
 
 ## Built With:
