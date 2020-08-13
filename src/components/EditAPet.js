@@ -67,8 +67,11 @@ export default function EditAPet(props) {
 							<h4 style={{ color: "blueviolet" }}>EDIT</h4>
 						</span>
 						<span>
-							<Link to={`/pets/shelters/${shelterId}`}>
-								<h4>Cancel</h4>
+							<Link
+								to={`/pets/shelters/${shelterId}`}
+								style={{ color: "blueviolet", textDecoration: "none" }}
+							>
+								<h4> Cancel</h4>
 							</Link>
 						</span>
 						<span>

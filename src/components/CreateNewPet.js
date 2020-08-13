@@ -12,10 +12,13 @@ import {
 	InputGroup,
 	Label,
 	Button,
+	Container,
+	Row,
 } from "reactstrap";
 
 import { postANewPet } from "../reducers/petManagement";
 import { showBreeds } from "../reducers/inforManagement";
+import NavBar from "./NavBar";
 
 export default function CreateNewPet(props) {
 	const dispatch = useDispatch();
@@ -65,29 +68,33 @@ export default function CreateNewPet(props) {
 	};
 
 	return (
-		<div className="container">
-			<Col xs="12" md="9">
-				<Card>
-					<CardHeader>
-						<strong>Add </strong> a new pet
-					</CardHeader>
-					<CardBody>
-						<Form
-							action=""
-							method="post"
-							encType="multipart/form-data"
-							className="form-horizontal"
-						>
-							<InputGroup className="mb-3">
-								<Input
-									type="text"
-									name="petName"
-									value={fields.petName}
-									placeholder="Pet Name"
-									onChange={changeFields}
-								/>
-							</InputGroup>
-							{/* <InputGroup className="mb-3">
+		<>
+			<NavBar />
+			<div className="app flex-row align-items-center mt-5">
+				<Container>
+					<Row className="justify-content-center " style={{ lineHeight: 2 }}>
+						<Col xs="12" md="9">
+							<Card>
+								<CardHeader>
+									<h3 style={{ color: "blueviolet" }}>ADD A PET</h3>
+								</CardHeader>
+								<CardBody>
+									<Form
+										action=""
+										method="post"
+										encType="multipart/form-data"
+										className="form-horizontal"
+									>
+										<InputGroup className="mb-3">
+											<Input
+												type="text"
+												name="petName"
+												value={fields.petName}
+												placeholder="Pet Name"
+												onChange={changeFields}
+											/>
+										</InputGroup>
+										{/* <InputGroup className="mb-3">
 								<Input
 									type="text"
 									name="photo"
@@ -96,231 +103,280 @@ export default function CreateNewPet(props) {
 									onChange={changeFields}
 								/>
 							</InputGroup> */}
-							<InputGroup className="mb-3">
-								<Input
-									type="select"
-									name="breedId"
-									placeholder="breed"
-									value={fields.breedId}
-									onChange={changeFields}
-								>
-									<option>Breed</option>
-									{breeds &&
-										breeds.map((b) => {
-											return (
-												<option key={b.id} value={b.id}>
-													{b.breedName}
-												</option>
-											);
-										})}
-								</Input>
-							</InputGroup>
-							<InputGroup className="mb-3">
-								<Input
-									type="select"
-									name="age"
-									placeholder="Age"
-									value={fields.age}
-									onChange={changeFields}
-								>
-									<option>Age</option>
-									<option value="1">Puppy (0-1)</option>
-									<option value="2">Young (1-3</option>
-									<option value="3">Middle Aged (3-7)</option>
-									<option value="4">Adult (7-10)</option>
-									<option value="5">Mature (10+)</option>
-								</Input>
-							</InputGroup>
-							<InputGroup className="mb-3">
-								<Input
-									type="select"
-									name="size"
-									placeholder="Size"
-									value={fields.size}
-									onChange={changeFields}
-								>
-									<option>Size</option>
-									<option value="1">Toy</option>
-									<option value="2">Small</option>
-									<option value="3">Medium</option>
-									<option value="4">Large</option>
-									<option value="5">X-large</option>
-								</Input>
-							</InputGroup>
-							<InputGroup className="mb-3">
-								<Input
-									type="textarea"
-									name="description"
-									id="exampleText"
-									placeholder="Description"
-									value={fields.description}
-									onChange={changeFields}
-								/>
-							</InputGroup>
-							<InputGroup className="mb-3">
-								<Col md="6" lg="6" xl="6" xs="12">
-									<Label htmlFor="sex">Sex</Label>
-								</Col>
-								<Col md="6" lg="6" xl="6" xs="12">
-									<FormGroup check inline>
+										<InputGroup className="mb-3">
+											<Input
+												type="select"
+												name="breedId"
+												placeholder="breed"
+												value={fields.breedId}
+												onChange={changeFields}
+											>
+												<option>Breed</option>
+												{breeds &&
+													breeds.map((b) => {
+														return (
+															<option key={b.id} value={b.id}>
+																{b.breedName}
+															</option>
+														);
+													})}
+											</Input>
+										</InputGroup>
+										<InputGroup className="mb-3">
+											<Input
+												type="select"
+												name="age"
+												placeholder="Age"
+												value={fields.age}
+												onChange={changeFields}
+											>
+												<option>Age</option>
+												<option value="1">Puppy (0-1)</option>
+												<option value="2">Young (1-3</option>
+												<option value="3">Middle Aged (3-7)</option>
+												<option value="4">Adult (7-10)</option>
+												<option value="5">Mature (10+)</option>
+											</Input>
+										</InputGroup>
+										<InputGroup className="mb-3">
+											<Input
+												type="select"
+												name="size"
+												placeholder="Size"
+												value={fields.size}
+												onChange={changeFields}
+											>
+												<option>Size</option>
+												<option value="1">Toy</option>
+												<option value="2">Small</option>
+												<option value="3">Medium</option>
+												<option value="4">Large</option>
+												<option value="5">X-large</option>
+											</Input>
+										</InputGroup>
+										<InputGroup className="mb-3">
+											<Input
+												type="textarea"
+												name="description"
+												id="exampleText"
+												placeholder="Description"
+												value={fields.description}
+												onChange={changeFields}
+											/>
+										</InputGroup>
+										<InputGroup className="mb-3">
+											<Col md="6" lg="6" xl="6" xs="12">
+												<Label htmlFor="sex">Sex</Label>
+											</Col>
+											<Col md="6" lg="6" xl="6" xs="12">
+												<FormGroup check inline>
+													<Input
+														className="form-check-input"
+														type="radio"
+														id="male"
+														name="sex"
+														value="1"
+														checked={fields.sex === "1"}
+														onChange={changeFields}
+													/>
+													<Label
+														className="form-check-label"
+														check
+														htmlFor="male"
+													>
+														Male
+													</Label>
+												</FormGroup>
+												<FormGroup check inline>
+													<Input
+														className="form-check-input"
+														type="radio"
+														id="female"
+														name="sex"
+														value="2"
+														checked={fields.sex === "2"}
+														onChange={changeFields}
+													/>
+													<Label
+														className="form-check-label"
+														check
+														htmlFor="female"
+													>
+														Female
+													</Label>
+												</FormGroup>
+											</Col>
+										</InputGroup>
+										<InputGroup className="mb-3">
+											<Col md="6" lg="6" xl="6" xs="12">
+												<Label htmlFor="isOkayKid">is Okay with Kids</Label>
+											</Col>
+											<Col md="6" lg="6" xl="6" xs="12">
+												<FormGroup check inline>
+													<Input
+														className="form-check-input"
+														type="radio"
+														id="yes"
+														name="isOkayKid"
+														value="true"
+														checked={fields.isOkayKids === "true"}
+														onChange={changeFields}
+													/>
+													<Label
+														className="form-check-label"
+														check
+														htmlFor="yes"
+													>
+														Yes
+													</Label>
+												</FormGroup>
+												<FormGroup check inline>
+													<Input
+														className="form-check-input"
+														type="radio"
+														id="no"
+														name="isOkayKid"
+														value="false"
+														checked={fields.isOkayKids === "false"}
+														onChange={changeFields}
+													/>
+													<Label
+														className="form-check-label"
+														check
+														htmlFor="no"
+													>
+														No
+													</Label>
+												</FormGroup>
+											</Col>
+										</InputGroup>
+										<InputGroup className="mb-3">
+											<Col md="6" lg="6" xl="6" xs="12">
+												<Label htmlFor="isOkayPets">
+													is Okay with other pets
+												</Label>
+											</Col>
+											<Col md="6" lg="6" xl="6" xs="12">
+												<FormGroup check inline>
+													<Input
+														className="form-check-input"
+														type="radio"
+														id="yes"
+														name="isOkayPets"
+														value="true"
+														checked={fields.isOkayPets === "true"}
+														onChange={changeFields}
+													/>
+													<Label
+														className="form-check-label"
+														check
+														htmlFor="yes"
+													>
+														Yes
+													</Label>
+												</FormGroup>
+												<FormGroup check inline>
+													<Input
+														className="form-check-input"
+														type="radio"
+														id="no"
+														name="isOkayPets"
+														value="false"
+														checked={fields.isOkayPets === "false"}
+														onChange={changeFields}
+													/>
+													<Label
+														className="form-check-label"
+														check
+														htmlFor="no"
+													>
+														No
+													</Label>
+												</FormGroup>
+											</Col>
+										</InputGroup>
+										<InputGroup className="mb-3">
+											<Col md="6" lg="6" xl="6" xs="12">
+												<Label htmlFor="isAdopted">is adopted</Label>
+											</Col>
+											<Col md="6" lg="6" xl="6" xs="12">
+												<FormGroup check inline>
+													<Input
+														className="form-check-input"
+														type="radio"
+														id="yes"
+														name="isAdopted"
+														value="true"
+														checked={fields.isAdopted === "true"}
+														onChange={changeFields}
+													/>
+													<Label
+														className="form-check-label"
+														check
+														htmlFor="yes"
+													>
+														Yes
+													</Label>
+												</FormGroup>
+												<FormGroup check inline>
+													<Input
+														className="form-check-input"
+														type="radio"
+														id="no"
+														name="isAdopted"
+														value="false"
+														checked={fields.isAdopted === "false"}
+														onChange={changeFields}
+													/>
+													<Label
+														className="form-check-label"
+														check
+														htmlFor="no"
+													>
+														No
+													</Label>
+												</FormGroup>
+											</Col>
+										</InputGroup>
+									</Form>
+								</CardBody>
+								<Col className="d-flex justify-content-sm-end mb-3">
+									<InputGroup className="mb-3">
 										<Input
-											className="form-check-input"
-											type="radio"
-											id="male"
-											name="sex"
-											value="1"
-											checked={fields.sex === "1"}
-											onChange={changeFields}
+											name="image_url"
+											type="file"
+											placeholder="Image file"
+											value={fields.photo}
+											onChange={handleChangeUpload}
+											style={{
+												color: "blueviolet",
+												boder: "1px solid  blueviolet ",
+											}}
 										/>
-										<Label className="form-check-label" check htmlFor="male">
-											Male
-										</Label>
-									</FormGroup>
-									<FormGroup check inline>
-										<Input
-											className="form-check-input"
-											type="radio"
-											id="female"
-											name="sex"
-											value="2"
-											checked={fields.sex === "2"}
-											onChange={changeFields}
-										/>
-										<Label className="form-check-label" check htmlFor="female">
-											Female
-										</Label>
-									</FormGroup>
+									</InputGroup>
+									<Button
+										style={{
+											backgroundColor: "#b8adf3",
+											border: "1px solid white",
+										}}
+										onClick={onSend}
+									>
+										<span
+											style={{
+												color: "#423295",
+												display: "flex",
+												justifyContent: "flex-end",
+											}}
+										>
+											Add
+										</span>
+									</Button>
 								</Col>
-							</InputGroup>
-							<InputGroup className="mb-3">
-								<Col md="6" lg="6" xl="6" xs="12">
-									<Label htmlFor="isOkayKid">is Okay with Kids</Label>
-								</Col>
-								<Col md="6" lg="6" xl="6" xs="12">
-									<FormGroup check inline>
-										<Input
-											className="form-check-input"
-											type="radio"
-											id="yes"
-											name="isOkayKid"
-											value="true"
-											checked={fields.isOkayKids === "true"}
-											onChange={changeFields}
-										/>
-										<Label className="form-check-label" check htmlFor="yes">
-											Yes
-										</Label>
-									</FormGroup>
-									<FormGroup check inline>
-										<Input
-											className="form-check-input"
-											type="radio"
-											id="no"
-											name="isOkayKid"
-											value="false"
-											checked={fields.isOkayKids === "false"}
-											onChange={changeFields}
-										/>
-										<Label className="form-check-label" check htmlFor="no">
-											No
-										</Label>
-									</FormGroup>
-								</Col>
-							</InputGroup>
-							<InputGroup className="mb-3">
-								<Col md="6" lg="6" xl="6" xs="12">
-									<Label htmlFor="isOkayPets">is Okay with other pets</Label>
-								</Col>
-								<Col md="6" lg="6" xl="6" xs="12">
-									<FormGroup check inline>
-										<Input
-											className="form-check-input"
-											type="radio"
-											id="yes"
-											name="isOkayPets"
-											value="true"
-											checked={fields.isOkayPets === "true"}
-											onChange={changeFields}
-										/>
-										<Label className="form-check-label" check htmlFor="yes">
-											Yes
-										</Label>
-									</FormGroup>
-									<FormGroup check inline>
-										<Input
-											className="form-check-input"
-											type="radio"
-											id="no"
-											name="isOkayPets"
-											value="false"
-											checked={fields.isOkayPets === "false"}
-											onChange={changeFields}
-										/>
-										<Label className="form-check-label" check htmlFor="no">
-											No
-										</Label>
-									</FormGroup>
-								</Col>
-							</InputGroup>
-							<InputGroup className="mb-3">
-								<Col md="6" lg="6" xl="6" xs="12">
-									<Label htmlFor="isAdopted">is adopted</Label>
-								</Col>
-								<Col md="6" lg="6" xl="6" xs="12">
-									<FormGroup check inline>
-										<Input
-											className="form-check-input"
-											type="radio"
-											id="yes"
-											name="isAdopted"
-											value="true"
-											checked={fields.isAdopted === "true"}
-											onChange={changeFields}
-										/>
-										<Label className="form-check-label" check htmlFor="yes">
-											Yes
-										</Label>
-									</FormGroup>
-									<FormGroup check inline>
-										<Input
-											className="form-check-input"
-											type="radio"
-											id="no"
-											name="isAdopted"
-											value="false"
-											checked={fields.isAdopted === "false"}
-											onChange={changeFields}
-										/>
-										<Label className="form-check-label" check htmlFor="no">
-											No
-										</Label>
-									</FormGroup>
-								</Col>
-							</InputGroup>
-						</Form>
-					</CardBody>
-					<Col className="d-flex justify-content-sm-end mb-3">
-						<Button
-							style={{
-								backgroundColor: "#b8adf3",
-								border: "1px solid white",
-							}}
-							onClick={onSend}
-						>
-							<span style={{ color: "#423295" }}>Add</span>
-						</Button>
-						<InputGroup className="mb-3">
-							<Input
-								name="image_url"
-								type="file"
-								placeholder="Image file"
-								value={fields.photo}
-								onChange={handleChangeUpload}
-							/>
-						</InputGroup>
-					</Col>
-				</Card>
-			</Col>
-		</div>
+							</Card>
+						</Col>
+					</Row>
+				</Container>
+			</div>
+		</>
 	);
 }

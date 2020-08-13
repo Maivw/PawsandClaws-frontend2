@@ -182,6 +182,11 @@ export default function ShelterProfile(props) {
 							<span style={{ color: "#423295" }}>List Pets</span>
 						</Link>
 					</strong>
+					<strong style={{ textDecoration: "none" }}>
+						<Link to={`/pets/new`}>
+							<span style={{ color: "#423295" }}>Creat a pet</span>
+						</Link>
+					</strong>
 				</h4>
 				<div className="shadow">
 					<Table
