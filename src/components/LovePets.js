@@ -17,6 +17,7 @@ import NavBar from "./NavBar";
 
 export default function LovePets(props) {
 	const pets = useSelector((state) => state.petManagement.favoritePets);
+	console.log("LOOOO", pets);
 
 	return (
 		<>

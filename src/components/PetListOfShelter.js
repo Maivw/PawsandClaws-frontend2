@@ -17,6 +17,7 @@ import { displayAllPetsShelter, deleteAPet } from "../reducers/petManagement";
 import Navbar from "./NavBar";
 export default function PetsListOfShelter(props) {
 	const pets = useSelector((state) => state.petManagement.shelterPets);
+	console.log("PPPP333", pets);
 	const token = useSelector((state) => state.authentication.token);
 	const { id } = useParams();
 

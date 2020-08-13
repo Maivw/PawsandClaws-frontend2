@@ -9,14 +9,15 @@ import { displayAPet } from "../reducers/petManagement";
 import NavBar from "./NavBar";
 
 export default function PetDetail(props) {
-	const pet = useSelector((state) => state.petManagement.pet);
+	const pet = useSelector((state) => state.petManagement.pet.pet);
 	console.log("get@@@@", pet);
 	const id = props.match.params.id;
+	console.log("checkkkk2", id);
 	const [opened, setOpened] = useState(false);
 
 	const dispatch = useDispatch();
 	useEffect(() => {
-		dispatch(displayAPet(pet, id));
+		dispatch(displayAPet({ id }));
 	}, []);
 
 	const opendReqModal = () => {
@@ -46,7 +47,7 @@ export default function PetDetail(props) {
 								<Col xl="6" lg="6" md="6" xs="12" className="mt-4 mb-4">
 									<img
 										className="petImage"
-										src={pet.pet.photo}
+										src={pet.photo}
 										style={{
 											height: 600,
 											width: 500,
@@ -69,49 +70,49 @@ export default function PetDetail(props) {
 										<div>
 											Age:
 											<span style={{ color: "#575656", marginLeft: 5 }}>
-												{convertAge(pet.pet.age)}
+												{convertAge(pet.age)}
 											</span>
 										</div>
 										<div>
 											Breed:
 											<span style={{ color: "#575656", marginLeft: 5 }}>
-												{pet.pet.Breed.breedName}
+												{pet.Breed.breedName}
 											</span>
 										</div>
 										<div>
 											Size:
 											<span style={{ color: "#575656", marginLeft: 5 }}>
-												{convertSize(pet.pet.size)}
+												{convertSize(pet.size)}
 											</span>
 										</div>
 										<div>
 											Sex:
 											<span style={{ color: "#575656", marginLeft: 5 }}>
-												{convertGender(pet.pet.sex)}
+												{convertGender(pet.sex)}
 											</span>
 										</div>
 										<div>
 											IsAdopted:
 											<span style={{ color: "#575656", marginLeft: 5 }}>
-												{pet.pet.isAdopted ? "Yes" : "No"}
+												{pet.isAdopted ? "Yes" : "No"}
 											</span>
 										</div>
 										<div>
 											Is Okay with Kids:
 											<span style={{ color: "#575656", marginLeft: 5 }}>
-												{pet.pet.isOkayKids ? "Yes" : "No"}
+												{pet.isOkayKids ? "Yes" : "No"}
 											</span>
 										</div>
 										<div>
 											Is Okay with other pets:{" "}
 											<span style={{ color: "#575656", marginLeft: 5 }}>
-												{pet.pet.isOkayPets ? "Yes" : "No"}
+												{pet.isOkayPets ? "Yes" : "No"}
 											</span>
 										</div>
 										<div>
 											Description:
 											<span style={{ color: "#575656", marginLeft: 5 }}>
-												{pet.pet.description}
+												{pet.description}
 											</span>
 										</div>
 									</div>
@@ -119,7 +120,7 @@ export default function PetDetail(props) {
 									<hr />
 									<Row className="mt-5">
 										<Col>
-											<Link to="/pets">
+											<Link to="/">
 												<FaArrowCircleLeft
 													style={{
 														color: "#b8adf3",

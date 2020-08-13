@@ -15,13 +15,13 @@ export const removeToken = (token) => ({ type: REMOVE_TOKEN });
 export const setUser = (user) => ({ type: SET_USER, user });
 
 export const shelterProfileShowUp = (params) => async (dispatch) => {
-	const result = await axios.get(`http://localhost:8080/shelters/${params.id}`);
+	const result = await axios.get(`/shelters/${params.id}`);
 
 	return dispatch(setProfile(result.data.shelterUser));
 };
 
 export const adopterProfileShowUp = (params) => async (dispatch) => {
-	const result = await axios.get(`http://localhost:8080/users/${params.id}`);
+	const result = await axios.get(`/users/${params.id}`);
 	console.log("setProfile", result.data.user);
 
 	return dispatch(setProfile(result.data.user));

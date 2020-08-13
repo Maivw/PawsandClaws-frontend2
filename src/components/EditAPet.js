@@ -33,23 +33,22 @@ const defaultState = {
 };
 
 export default function EditAPet(props) {
-	const shelterId = useSelector((state) => state.authentication.user.id);
-	console.log("kjkkj", shelterId);
+	const shelterId = useSelector((state) => state.authentication.user.user.id);
+
 	const id = props.match.params.id;
 	const dispatch = useDispatch();
 	const breeds = useSelector((state) => state.inforManagement.breeds);
 	const [fields, setFields] = useState(defaultState);
-	console.log("breeds", breeds);
 	useEffect(() => {
 		dispatch(showBreeds());
 	}, []);
 
 	const onSend = (e) => {
 		e.preventDefault();
-		// console.log("Fielts", fields);
-		// const obj = { fields, id };
-		// dispatch(shelterEditAPet(obj));
-		// setFields(defaultState);
+		console.log("Fielts", fields);
+		const obj = { fields, id };
+		dispatch(shelterEditAPet(obj));
+		setFields(defaultState);
 		toast("Edit successfully!");
 	};
 
@@ -68,7 +67,12 @@ export default function EditAPet(props) {
 							<h4 style={{ color: "blueviolet" }}>EDIT</h4>
 						</span>
 						<span>
-							<Link to={`/pets/edit/shelters/${shelterId}`}>
+							<Link to={`/pets/shelters/${shelterId}`}>
+								<h4>Cancel</h4>
+							</Link>
+						</span>
+						<span>
+							<Link to={`/pets/shelters/${shelterId}`}>
 								<FaArrowCircleLeft
 									style={{
 										color: "#b8adf3",

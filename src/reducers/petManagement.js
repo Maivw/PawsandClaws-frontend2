@@ -23,14 +23,16 @@ export const displayAllPets = (params = {}) => async (dispatch) => {
 	dispatch(getAllPets(result.data.pets));
 };
 
-export const displayAPet = (params, id) => async (dispatch) => {
-	const result = await axios.get(`/pets/${id}`, { ...params });
+export const displayAPet = (params) => async (dispatch) => {
+	console.log("checkkk3", params);
+	const result = await axios.get(`/pets/${params.id}`, { ...params });
 
 	dispatch(getAPet(result.data));
 };
 
 export const displayAllPetsShelter = (params) => async (dispatch) => {
-	const result = await axios.get(`/pets/shelters/${params.id}`);
+	console.log("more", params);
+	const result = await axios.get(`/pets/shelters/${params.id}`); // {id: 1}
 
 	dispatch(gePetsOfAShelter(result.data.pets));
 };
@@ -49,8 +51,12 @@ export const postANewPet = (params) => async (dispatch) => {
 };
 export const deleteAPet = (params) => async (dispatch) => {
 	const result = await axios.delete(`/pets/${params.id}`);
+	console.log("cff", result.data.pet.shelterId);
+	console.log("ggggg", params.shelterId);
 
-	dispatch(removeAPet(result.data.pet));
+	// dispatch(removeAPet(result.data.pet));
+
+	dispatch(displayAllPetsShelter({ id: params.shelterId }));
 };
 
 export const shelterEditAPet = ({ fields, id }) => async (dispatch) => {
@@ -102,6 +108,7 @@ export default function reducer(state = inititialState, action) {
 			};
 		}
 		case GET_PETS_OF_SHELTERS: {
+			console.log("actiiiii", action.shelterPets);
 			return {
 				...state,
 				shelterPets: action.shelterPets,

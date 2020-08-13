@@ -55,6 +55,7 @@ export default function ShelterProfile(props) {
 		dispatch(displayAllReqs(data, id));
 	}, []);
 	const { id } = useParams();
+	console.log("hhhhheee", { id });
 	const pets = useSelector((state) => state.petManagement.shelterPets);
 	const user = useSelector((state) => state.authentication.userProfile);
 
@@ -124,7 +125,7 @@ export default function ShelterProfile(props) {
 							{pets &&
 								pets.map((pet) => {
 									return (
-										<div style={{ border: "1px solid red" }}>
+										<div key={pet.id} style={{ border: "1px solid red" }}>
 											<Col xl="6" lg="6" md="6" xs="12">
 												<Card
 													style={{
