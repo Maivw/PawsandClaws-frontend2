@@ -5,6 +5,7 @@ const FAVORITE_PET = "FAVORITE_PET";
 const DELETE_A_PET = "DELETE_A_PET";
 const EDIT_A_PET = "EDIT_A_PET ";
 const GET_PETS_OF_SHELTERS = "GET_PETS_OF_SHELTERS";
+const DELETE_A_PET_FROM_LOVE_LIST = "DELETE_A_PET_FROM_LOVE_LIST";
 
 export const getAllPets = (pets) => ({ type: GET_ALL_PETS, pets });
 export const getAPet = (pet) => ({ type: GET_A_PET, pet });
@@ -49,12 +50,15 @@ export const postANewPet = (params) => async (dispatch) => {
 
 	dispatch(getAllPets());
 };
+
+export const deleteAPetFromLoveList = (pet) => (dispatch) => {
+	dispatch({
+		type: DELETE_A_PET_FROM_LOVE_LIST,
+		pet,
+	});
+};
 export const deleteAPet = (params) => async (dispatch) => {
 	const result = await axios.delete(`/pets/${params.id}`);
-	console.log("cff", result.data.pet.shelterId);
-	console.log("ggggg", params.shelterId);
-
-	// dispatch(removeAPet(result.data.pet));
 
 	dispatch(displayAllPetsShelter({ id: params.shelterId }));
 };
@@ -99,16 +103,15 @@ export default function reducer(state = inititialState, action) {
 				favoritePets: [...newState],
 			};
 		}
-		case DELETE_A_PET: {
-			const newState = [...state.shelterPets];
-			const restPets = newState.filter((p) => p.id !== action.pet);
-			return {
-				...state,
-				shelterPets: [...restPets],
-			};
-		}
+		// case DELETE_A_PET: {
+		// 	const newState = [...state.shelterPets];
+		// 	const restPets = newState.filter((p) => p.id !== action.pet);
+		// 	return {
+		// 		...state,
+		// 		shelterPets: [...restPets],
+		// 	};
+		// }
 		case GET_PETS_OF_SHELTERS: {
-			console.log("actiiiii", action.shelterPets);
 			return {
 				...state,
 				shelterPets: action.shelterPets,
@@ -119,6 +122,15 @@ export default function reducer(state = inititialState, action) {
 			return {
 				...state,
 				pet: action.pet,
+			};
+		}
+
+		case DELETE_A_PET_FROM_LOVE_LIST: {
+			let newState = [...state.favoritePets];
+			newState = newState.filter((p) => p.id !== action.pet.id);
+			return {
+				...state,
+				favoritePets: [...newState],
 			};
 		}
 		default:

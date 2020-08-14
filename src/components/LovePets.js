@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
 	Card,
@@ -13,10 +13,13 @@ import {
 	Col,
 } from "reactstrap";
 import NavBar from "./NavBar";
-
+import { deleteAPetFromLoveList } from "../reducers/petManagement";
 export default function LovePets(props) {
+	const dispatch = useDispatch();
 	const pets = useSelector((state) => state.petManagement.favoritePets);
-
+	const onDelete = (pet) => () => {
+		dispatch(deleteAPetFromLoveList(pet));
+	};
 	return (
 		<>
 			<div>
@@ -77,15 +80,16 @@ export default function LovePets(props) {
 															>
 																<span style={{ color: "#423295" }}>Detail</span>
 															</Button>
-															<Button
-																style={{
-																	backgroundColor: "#b8adf3",
-																	border: "1px solid white",
-																}}
-															>
-																<span style={{ color: "#423295" }}>Remove</span>
-															</Button>
 														</Link>
+														<Button
+															style={{
+																backgroundColor: "#b8adf3",
+																border: "1px solid white",
+															}}
+															onClick={onDelete(pet)}
+														>
+															<span style={{ color: "#423295" }}>Remove</span>
+														</Button>
 													</div>
 												</CardBody>
 											</Card>
