@@ -10,7 +10,6 @@ import {
 	Col,
 	CardBody,
 	Container,
-	Form,
 	CardGroup,
 } from "reactstrap";
 import LoginAdopter from "./LoginAdopter";

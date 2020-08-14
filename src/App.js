@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import React from "react";
+
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import SignUp from "./components/SignUp/SignUp";
 import Login from "./components/Login/Login";
 import Logout from "./components/Logout";

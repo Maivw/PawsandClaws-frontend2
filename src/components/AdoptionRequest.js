@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { sendAdoptionRequest } from "../reducers/inforManagement";
 import {
 	Button,
@@ -13,7 +12,6 @@ import {
 
 export default function AdoptionRequestModal(props) {
 	const { isOpen, pet } = props;
-	const token = useSelector((state) => state.authentication.token);
 
 	const dispatch = useDispatch();
 

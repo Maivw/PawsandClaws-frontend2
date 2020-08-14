@@ -16,7 +16,6 @@ import {
 	CardSubtitle,
 	Row,
 	Col,
-	Navbar,
 } from "reactstrap";
 
 import { createPrefPetForm, showBreeds } from "../reducers/inforManagement";
@@ -29,7 +28,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
 import NavBar from "./NavBar";
 function SampleNextArrow(props) {
-	const { className, style, onClick } = props;
+	const { className, onClick } = props;
 	return (
 		<div>
 			<FaArrowCircleRight
@@ -42,7 +41,7 @@ function SampleNextArrow(props) {
 }
 
 function SamplePrevArrow(props) {
-	const { className, style, onClick } = props;
+	const { className, onClick } = props;
 	return (
 		<div>
 			<FaArrowCircleLeft

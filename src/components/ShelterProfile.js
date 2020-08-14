@@ -22,7 +22,7 @@ import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
 import Navbar from "./NavBar";
 
 function SampleNextArrow(props) {
-	const { className, style, onClick } = props;
+	const { className, onClick } = props;
 	return (
 		<div>
 			<FaArrowCircleRight
@@ -35,7 +35,7 @@ function SampleNextArrow(props) {
 }
 
 function SamplePrevArrow(props) {
-	const { className, style, onClick } = props;
+	const { className, onClick } = props;
 	return (
 		<div>
 			<FaArrowCircleLeft

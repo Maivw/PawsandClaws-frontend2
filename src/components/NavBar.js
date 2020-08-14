@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import {
 	Collapse,
 	Navbar,
@@ -7,7 +7,6 @@ import {
 	NavbarBrand,
 	Nav,
 	NavItem,
-	NavLink,
 } from "reactstrap";
 import Logout from "./Logout";
 import { FaUserCheck, FaDog, FaHeart } from "react-icons/fa";

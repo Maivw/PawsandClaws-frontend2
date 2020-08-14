@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import Navbar from "./NavBar";
 import { Col, Row } from "reactstrap";
-import { useDispatch, useSelector } from "react-redux";
-import PetsListOfShelter from "./PetListOfShelter";
+import { useSelector } from "react-redux";
 import PetsList from "./PetsList";
 import Carousel from "./Carousel";
 
