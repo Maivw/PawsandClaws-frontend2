@@ -14,8 +14,9 @@ import {
 } from "reactstrap";
 import { FaHeart } from "react-icons/fa";
 import { displayAllPets, favoriteAPet } from "../reducers/petManagement";
+import NavBar from "./NavBar";
 
-export default function PetsList(props) {
+export default function PetListWithNavBar(props) {
 	const pets = useSelector((state) => state.petManagement.pets);
 	const favPets = useSelector((state) => state.petManagement.favoritePets);
 	const dispatch = useDispatch();
@@ -28,6 +29,7 @@ export default function PetsList(props) {
 	};
 	return (
 		<>
+			<NavBar />
 			<div>
 				<Row className="justify-content-center">
 					<Col xl="9" lg="9" md="9" xs="12">

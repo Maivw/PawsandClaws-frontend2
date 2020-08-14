@@ -15,6 +15,7 @@ import Home from "./components/Home";
 import PetsListOfShelterEdit from "./components/PetsShelterListEdit";
 import EditAPet from "./components/EditAPet";
 import LovePets from "./components/LovePets";
+import PetListWithNavBar from "./components/PetListWithNavBar";
 
 function App() {
 	return (
@@ -26,6 +27,7 @@ function App() {
 					<Route exact path="/" component={Home} />
 					<Route exact path="/logout" component={Logout} />
 					<Route exact path="/pets" component={PetsList} />
+					<Route exact path="/petslist" component={PetListWithNavBar} />
 					<Route exact path="/pets/new" component={CreateNewPet} />
 					<Route exact path="/pets/:id" component={PetDetail} />
 					<Route exact path="/pets/edit/:id" component={EditAPet} />

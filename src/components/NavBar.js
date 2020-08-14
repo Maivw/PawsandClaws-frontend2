@@ -10,6 +10,8 @@ import {
 } from "reactstrap";
 import Logout from "./Logout";
 import { FaUserCheck, FaDog, FaHeart } from "react-icons/fa";
+import { MdPets } from "react-icons/md";
+
 import { Link } from "react-router-dom";
 
 export default function NavBar(props) {
@@ -67,6 +69,11 @@ export default function NavBar(props) {
 							<NavItem className="nav-item">
 								<Link to="/lovepets" style={{ color: "white" }}>
 									<FaHeart className="ml-5" />
+								</Link>
+							</NavItem>
+							<NavItem className="nav-item">
+								<Link to="/petslist" style={{ color: "white" }}>
+									<MdPets className="ml-5" />
 								</Link>
 							</NavItem>
 							<NavItem className="nav-item">

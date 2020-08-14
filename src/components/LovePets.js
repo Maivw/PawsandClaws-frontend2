@@ -30,7 +30,14 @@ export default function LovePets(props) {
 							{pets &&
 								pets.map((pet) => {
 									return (
-										<Col xl="3" lg="3" md="3" xs="12" className="mt-4">
+										<Col
+											xl="3"
+											lg="3"
+											md="3"
+											xs="12"
+											className="mt-4"
+											key={pet.id}
+										>
 											<Card
 												style={{
 													borderRadius: 10,
