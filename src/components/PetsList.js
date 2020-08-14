@@ -37,7 +37,14 @@ export default function PetsList(props) {
 								pets.map((pet) => {
 									const fav = favPets.find((f) => f.id === pet.id);
 									return (
-										<Col xl="3" lg="3" md="3" xs="12" className="mt-4">
+										<Col
+											xl="3"
+											lg="3"
+											md="3"
+											xs="12"
+											className="mt-4"
+											key={pet.id}
+										>
 											<Card
 												style={{
 													borderRadius: 10,
