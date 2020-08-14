@@ -21,6 +21,8 @@ import { showBreeds } from "../reducers/inforManagement";
 import NavBar from "./NavBar";
 
 export default function CreateNewPet(props) {
+	const shelterId = useSelector((state) => state.authentication.user.user.id);
+	console.log("BBBBB", shelterId);
 	const dispatch = useDispatch();
 	const [file, setFile] = useState("");
 	const [imageFile, setImageFile] = useState("");
@@ -69,7 +71,7 @@ export default function CreateNewPet(props) {
 
 	return (
 		<>
-			<NavBar />
+			<NavBar shelterId={shelterId} />
 			<div className="app flex-row align-items-center mt-5">
 				<Container>
 					<Row className="justify-content-center " style={{ lineHeight: 2 }}>

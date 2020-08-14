@@ -17,7 +17,6 @@ import { displayAllPetsShelter, deleteAPet } from "../reducers/petManagement";
 import Navbar from "./NavBar";
 export default function PetsListOfShelter(props) {
 	const pets = useSelector((state) => state.petManagement.shelterPets);
-	console.log("PPPP333", pets);
 	const token = useSelector((state) => state.authentication.token);
 	const { id } = useParams();
 
@@ -31,7 +30,7 @@ export default function PetsListOfShelter(props) {
 	return (
 		<>
 			<div>
-				<Navbar />
+				<Navbar shelterId={id} />
 				<Row className="justify-content-center">
 					<Col xl="9" lg="9" md="9" xs="12">
 						<Row>
