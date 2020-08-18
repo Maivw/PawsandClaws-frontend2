@@ -22,7 +22,7 @@ import NavBar from "./NavBar";
 
 export default function CreateNewPet(props) {
 	const shelterId = useSelector((state) => state.authentication.user.user.id);
-	console.log("BBBBB", shelterId);
+
 	const dispatch = useDispatch();
 	const [file, setFile] = useState("");
 	const [imageFile, setImageFile] = useState("");
@@ -44,9 +44,8 @@ export default function CreateNewPet(props) {
 	}, []);
 
 	const onSend = (e) => {
+		e.preventDefault();
 		var data = new FormData();
-		console.log("fields", fields);
-		console.log("file", file);
 		data.append("petName", fields.petName);
 		data.append("photo", file);
 		data.append("breedId", fields.breedId);
@@ -96,15 +95,7 @@ export default function CreateNewPet(props) {
 												onChange={changeFields}
 											/>
 										</InputGroup>
-										{/* <InputGroup className="mb-3">
-								<Input
-									type="text"
-									name="photo"
-									placeholder="Image Url"
-									value={fields.photo}
-									onChange={changeFields}
-								/>
-							</InputGroup> */}
+
 										<InputGroup className="mb-3">
 											<Input
 												type="select"

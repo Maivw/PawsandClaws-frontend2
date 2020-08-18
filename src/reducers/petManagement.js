@@ -25,15 +25,13 @@ export const displayAllPets = (params = {}) => async (dispatch) => {
 };
 
 export const displayAPet = (params) => async (dispatch) => {
-	console.log("checkkk3", params);
 	const result = await axios.get(`/pets/${params.id}`, { ...params });
 
 	dispatch(getAPet(result.data));
 };
 
 export const displayAllPetsShelter = (params) => async (dispatch) => {
-	console.log("more", params);
-	const result = await axios.get(`/pets/shelters/${params.id}`); // {id: 1}
+	const result = await axios.get(`/pets/shelters/${params.id}`);
 
 	dispatch(gePetsOfAShelter(result.data.pets));
 };

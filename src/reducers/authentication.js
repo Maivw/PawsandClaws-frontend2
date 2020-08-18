@@ -29,7 +29,6 @@ export const adopterProfileShowUp = (params) => async (dispatch) => {
 
 export const loginAdopter = (params) => async (dispatch) => {
 	const result = await axios.post("/users/login", params);
-	console.log("yy444", result.data.token);
 	dispatch(setUser({ ...result.data, token: result.data.token }));
 };
 
@@ -64,7 +63,7 @@ export const logout = (params) => async (dispatch) => {
 	dispatch(removeToken());
 };
 const initState = {
-	user: { token: "" },
+	user: { token: "", user: { id: "" } },
 };
 export default function reducer(state = initState, action) {
 	switch (action.type) {
