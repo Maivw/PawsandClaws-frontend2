@@ -9,7 +9,7 @@ import { displayAPet } from "../reducers/petManagement";
 import NavBar from "./NavBar";
 
 export default function PetDetail(props) {
-	const pet = useSelector((state) => state.petManagement.pet.pet);
+	const pet = useSelector((state) => state.petManagement.pets.pet);
 	console.log("get@@@@", pet);
 	const id = props.match.params.id;
 	console.log("checkkkk2", id);
