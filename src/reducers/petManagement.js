@@ -70,6 +70,7 @@ const inititialState = {
 	pets: [],
 	favoritePets: [],
 	shelterPets: [],
+	pet: [],
 };
 export default function reducer(state = inititialState, action) {
 	switch (action.type) {

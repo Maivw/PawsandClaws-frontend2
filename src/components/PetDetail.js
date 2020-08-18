@@ -9,7 +9,7 @@ import { displayAPet } from "../reducers/petManagement";
 import NavBar from "./NavBar";
 
 export default function PetDetail(props) {
-	const pet = useSelector((state) => state.petManagement.pets.pet);
+	const pet = useSelector((state) => state.petManagement.pet.pet);
 	console.log("get@@@@", pet);
 	const id = props.match.params.id;
 	console.log("checkkkk2", id);
@@ -18,7 +18,7 @@ export default function PetDetail(props) {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(displayAPet({ id }));
-	}, []);
+	}, [id]);
 
 	const opendReqModal = () => {
 		setOpened(true);
