@@ -19,6 +19,8 @@ import {
 import { postANewPet } from "../reducers/petManagement";
 import { showBreeds } from "../reducers/inforManagement";
 import NavBar from "./NavBar";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function CreateNewPet(props) {
 	const shelterId = useSelector((state) => state.authentication.user.user.id);
@@ -58,6 +60,7 @@ export default function CreateNewPet(props) {
 		data.append("isAdopted", fields.isAdopted);
 
 		dispatch(postANewPet(data));
+		toast("Add a pet successfully!");
 	};
 	const handleChangeUpload = (e) => {
 		setImageFile(URL.createObjectURL(e.target.files[0]));
@@ -71,6 +74,7 @@ export default function CreateNewPet(props) {
 	return (
 		<>
 			<NavBar shelterId={shelterId} />
+			<ToastContainer />
 			<div className="app flex-row align-items-center mt-5">
 				<Container>
 					<Row className="justify-content-center " style={{ lineHeight: 2 }}>

@@ -48,6 +48,7 @@ function SamplePrevArrow(props) {
 }
 
 export default function ShelterProfile(props) {
+	const shelterId = useSelector((state) => state.authentication.user.user.id);
 	const requests = useSelector((state) => state.inforManagement.requests);
 	const dispatch = useDispatch();
 	useEffect(() => {
@@ -55,7 +56,7 @@ export default function ShelterProfile(props) {
 		dispatch(displayAllReqs(data, id));
 	}, []);
 	const { id } = useParams();
-	console.log("hhhhheee", { id });
+
 	const pets = useSelector((state) => state.petManagement.shelterPets);
 	const user = useSelector((state) => state.authentication.userProfile);
 
@@ -73,7 +74,7 @@ export default function ShelterProfile(props) {
 	};
 	return (
 		<div>
-			<Navbar />
+			<Navbar shelterId={shelterId} />
 			<div className="container mt-5">
 				<Row>
 					<Col xs="12" md="4">

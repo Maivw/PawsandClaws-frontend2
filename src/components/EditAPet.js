@@ -45,7 +45,6 @@ export default function EditAPet(props) {
 
 	const onSend = (e) => {
 		e.preventDefault();
-		console.log("Fielts", fields);
 		const obj = { fields, id };
 		dispatch(shelterEditAPet(obj));
 		setFields(defaultState);
